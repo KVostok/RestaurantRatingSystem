@@ -1,7 +1,5 @@
 package ru.kosmos.restaurantratingsystem.model;
 
-import org.springframework.data.domain.Persistable;
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;

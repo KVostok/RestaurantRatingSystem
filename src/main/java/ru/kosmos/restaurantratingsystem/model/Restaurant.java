@@ -1,7 +1,5 @@
 package ru.kosmos.restaurantratingsystem.model;
 
-import org.springframework.data.domain.Persistable;
-
 import javax.persistence.*;
 
 @Entity
