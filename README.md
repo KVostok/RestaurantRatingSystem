@@ -1,7 +1,7 @@
 # Restaurant Rating System
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/70bd5f79e068465da9562a21d6f7eae5)](https://app.codacy.com/gh/KVostok/RestaurantRatingSystem?utm_source=github.com&utm_medium=referral&utm_content=KVostok/RestaurantRatingSystem&utm_campaign=Badge_Grade_Settings)
-
+[![Build Status](https://travis-ci.com/KVostok/RestaurantRatingSystem.svg?branch=master)](https://travis-ci.com/KVostok/RestaurantRatingSystem)
 
 _A voting system REST API using Hibernate/Spring/SpringMVC_.
 
