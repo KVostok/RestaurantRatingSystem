@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>8afd823c-4587-4afc-8bfb-734eea2dcfc9.TABLE:PUBLIC.PUBLIC.DISH</OriginalElement>
+  <nodes>
+    <node x="-351.48441247002404" y="340.064748201439">8afd823c-4587-4afc-8bfb-734eea2dcfc9.TABLE:PUBLIC.PUBLIC.DISHES</node>
+    <node x="-136.76738609112715" y="355.7434052757795">8afd823c-4587-4afc-8bfb-734eea2dcfc9.TABLE:PUBLIC.PUBLIC.MENU</node>
+    <node x="152.94964028776974" y="46.45083932853717">8afd823c-4587-4afc-8bfb-734eea2dcfc9.TABLE:PUBLIC.PUBLIC.USERS</node>
+    <node x="-351.48441247002404" y="32.613908872901675">8afd823c-4587-4afc-8bfb-734eea2dcfc9.TABLE:PUBLIC.PUBLIC.ROLE</node>
+    <node x="-100.26738609112715" y="10.613908872901675">8afd823c-4587-4afc-8bfb-734eea2dcfc9.TABLE:PUBLIC.PUBLIC.ROLES</node>
+    <node x="-351.48441247002404" y="157.52038369304563">8afd823c-4587-4afc-8bfb-734eea2dcfc9.TABLE:PUBLIC.PUBLIC.DISH</node>
+    <node x="-94.76738609112715" y="183.17865707434055">8afd823c-4587-4afc-8bfb-734eea2dcfc9.TABLE:PUBLIC.PUBLIC.VOTES</node>
+    <node x="185.94964028776974" y="355.7434052757795">8afd823c-4587-4afc-8bfb-734eea2dcfc9.TABLE:PUBLIC.PUBLIC.RESTAURANT</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="8afd823c-4587-4afc-8bfb-734eea2dcfc9.TABLE:PUBLIC.PUBLIC.DISHES" target="8afd823c-4587-4afc-8bfb-734eea2dcfc9.TABLE:PUBLIC.PUBLIC.MENU" relationship="REFERENCES">
+      <point x="31.5" y="-50.5" />
+      <point x="-256.98441247002404" y="406.2434052757795" />
+      <point x="-52.76738609112715" y="406.2434052757795" />
+      <point x="0.0" y="50.5" />
+    </edge>
+    <edge source="8afd823c-4587-4afc-8bfb-734eea2dcfc9.TABLE:PUBLIC.PUBLIC.DISHES" target="8afd823c-4587-4afc-8bfb-734eea2dcfc9.TABLE:PUBLIC.PUBLIC.DISH" relationship="REFERENCES">
+      <point x="-31.5" y="-50.5" />
+      <point x="-319.98441247002404" y="316.6510791366907" />
+      <point x="-283.98441247002404" y="316.6510791366907" />
+      <point x="0.0" y="50.5" />
+    </edge>
+    <edge source="8afd823c-4587-4afc-8bfb-734eea2dcfc9.TABLE:PUBLIC.PUBLIC.ROLES" target="8afd823c-4587-4afc-8bfb-734eea2dcfc9.TABLE:PUBLIC.PUBLIC.ROLE" relationship="REFERENCES">
+      <point x="30.25" y="-50.5" />
+      <point x="-9.51738609112715" y="75.07553956834532" />
+      <point x="-283.98441247002404" y="75.07553956834532" />
+      <point x="0.0" y="39.5" />
+    </edge>
+    <edge source="8afd823c-4587-4afc-8bfb-734eea2dcfc9.TABLE:PUBLIC.PUBLIC.VOTES" target="8afd823c-4587-4afc-8bfb-734eea2dcfc9.TABLE:PUBLIC.PUBLIC.MENU" relationship="REFERENCES">
+      <point x="-31.5" y="-50.5" />
+      <point x="-63.26738609112715" y="270.81354916067147" />
+      <point x="-174.0569544364509" y="270.81354916067147" />
+      <point x="-174.0569544364509" y="391.9172661870505" />
+      <point x="-52.76738609112715" y="391.9172661870505" />
+      <point x="0.0" y="50.5" />
+    </edge>
+    <edge source="8afd823c-4587-4afc-8bfb-734eea2dcfc9.TABLE:PUBLIC.PUBLIC.MENU" target="8afd823c-4587-4afc-8bfb-734eea2dcfc9.TABLE:PUBLIC.PUBLIC.RESTAURANT" relationship="REFERENCES">
+      <point x="0.0" y="-50.5" />
+      <point x="-52.76738609112715" y="398.23621103117506" />
+      <point x="253.44964028776974" y="398.23621103117506" />
+      <point x="0.0" y="39.5" />
+    </edge>
+    <edge source="8afd823c-4587-4afc-8bfb-734eea2dcfc9.TABLE:PUBLIC.PUBLIC.VOTES" target="8afd823c-4587-4afc-8bfb-734eea2dcfc9.TABLE:PUBLIC.PUBLIC.USERS" relationship="REFERENCES">
+      <point x="31.5" y="-50.5" />
+      <point x="-0.2673860911271504" y="245.96642685851316" />
+      <point x="70.88249400479611" y="245.96642685851316" />
+      <point x="70.88249400479611" y="90.7913669064748" />
+      <point x="236.94964028776974" y="90.7913669064748" />
+      <point x="0.0" y="83.5" />
+    </edge>
+    <edge source="8afd823c-4587-4afc-8bfb-734eea2dcfc9.TABLE:PUBLIC.PUBLIC.ROLES" target="8afd823c-4587-4afc-8bfb-734eea2dcfc9.TABLE:PUBLIC.PUBLIC.USERS" relationship="REFERENCES">
+      <point x="-30.25" y="-50.5" />
+      <point x="-70.01738609112715" y="80.15227817745803" />
+      <point x="236.94964028776974" y="80.15227817745803" />
+      <point x="0.0" y="83.5" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic" zoom="0.892933618843683" showDependencies="false" x="333.0" y="473.23860911270987" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Columns</Category>
+    <Category>Key columns</Category>
+    <Category>Virtual foreign keys</Category>
+  </Categories>
+</Diagram>
+
