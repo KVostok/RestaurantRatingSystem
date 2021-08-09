@@ -9,10 +9,6 @@ public class Votes extends AbstractBaseEntity{
     public Votes() {
     }
 
-    public Votes(Integer id) {
-        super(id);
-    }
-
     @Override
     public String toString() {
         return "Votes{" +

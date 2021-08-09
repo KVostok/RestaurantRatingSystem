@@ -9,10 +9,6 @@ public class Roles extends AbstractBaseEntity{
     public Roles() {
     }
 
-    public Roles(Integer id) {
-        super(id);
-    }
-
     @Override
     public String toString() {
         return "Roles{" +

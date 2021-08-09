@@ -7,3 +7,14 @@ SELECT M.DATE, R.NAME, COUNT(R.ID) AS RATING FROM RESTAURANT AS R
 GROUP BY R.NAME, M.DATE
 --     HAVING M.DATE = DATE_SUB(TODAY, INTERVAL 0 DAY)
     ORDER BY M.DATE DESC, RATING DESC
+
+
+select R.ID as id_rest, R.name as rest_name, M.ID as id_menu, M.DATE, D2.NAME as dish_name, D.PRICE, V.ID as id_vote from RESTAURANT AS R
+    left join MENU M on R.ID = M.RESTAURANT_ID
+    left join DISHES D on M.ID = D.MENU_ID
+    left join DISH D2 on D2.ID = D.DISH_ID
+    left join VOTES V on M.ID = V.MENU_ID
+    where M.DATE='2021-08-02'
+
+select * from RESTAURANT R
+    inner join MENU M on R.ID = M.RESTAURANT_ID

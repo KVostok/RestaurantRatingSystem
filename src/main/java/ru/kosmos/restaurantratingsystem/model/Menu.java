@@ -1,8 +1,6 @@
 package ru.kosmos.restaurantratingsystem.model;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
 
@@ -12,6 +10,10 @@ public class Menu extends AbstractBaseEntity{
     @Column(name = "DATE", nullable = false)
     @NotNull
     private LocalDate date;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "RESTAURANT_ID", nullable = false)
+    private Restaurant restaurant;
 
     public Menu() {
     }
