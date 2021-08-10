@@ -3,8 +3,6 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/70bd5f79e068465da9562a21d6f7eae5)](https://app.codacy.com/gh/KVostok/RestaurantRatingSystem?utm_source=github.com&utm_medium=referral&utm_content=KVostok/RestaurantRatingSystem&utm_campaign=Badge_Grade_Settings)
 [![Build Status](https://travis-ci.com/KVostok/RestaurantRatingSystem.svg?branch=master)](https://travis-ci.com/KVostok/RestaurantRatingSystem)
 
-<a href="https://kvostok.github.io/my-pet-projects/">Список моих пет-проектов на Github page</a>
-
 _A voting system REST API using Hibernate/Spring/SpringMVC_.
 
 Voting system for deciding where to have lunch.
@@ -21,3 +19,4 @@ Voting system for deciding where to have lunch.
 Each restaurant provides new menu each day.
 
 ---
+<a href="https://kvostok.github.io/my-pet-projects/">Список моих пет-проектов на Github page</a>
