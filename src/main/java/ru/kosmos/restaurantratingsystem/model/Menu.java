@@ -1,5 +1,7 @@
 package ru.kosmos.restaurantratingsystem.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
@@ -13,6 +15,7 @@ public class Menu extends AbstractBaseEntity{
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "RESTAURANT_ID", nullable = false)
+    @JsonBackReference
     private Restaurant restaurant;
 
     public Menu() {
