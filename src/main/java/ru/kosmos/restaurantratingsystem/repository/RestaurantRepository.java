@@ -4,6 +4,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 import ru.kosmos.restaurantratingsystem.model.Restaurant;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Repository
@@ -27,7 +28,7 @@ public class RestaurantRepository {
         return repository.findById(id).orElse(null);
     }
 
-    public List<Restaurant> getAll() {
-        return repository.findAll(SORT_NAME);
+    public List<Restaurant> getAllRest() {
+        return repository.getAllRest(LocalDate.now());
     }
 }

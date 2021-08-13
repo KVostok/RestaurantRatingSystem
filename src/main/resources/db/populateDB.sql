@@ -74,7 +74,7 @@ VALUES  (TODAY, 10000),
         (TODAY, 10002),
         (TODAY, 10003),
         (TODAY, 10004),
-        (TODAY, 10005),
+--         (TODAY, 10005),
 
         (DATE_SUB(TODAY, 1 DAY), 10000),
         (DATE_SUB(TODAY, 1 DAY), 10001),

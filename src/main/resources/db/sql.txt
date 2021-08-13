@@ -18,3 +18,12 @@ select R.ID as id_rest, R.name as rest_name, M.ID as id_menu, M.DATE, D2.NAME as
 
 select * from RESTAURANT R
     inner join MENU M on R.ID = M.RESTAURANT_ID
+
+select R.ID, R.NAME, M.DATE, M.ID, M.RESTAURANT_ID from RESTAURANT R
+    left join (select * from MENU M1 where M1.DATE = TODAY) as M
+    on R.ID = M.RESTAURANT_ID
+
+    select R.ID, R.NAME, M.ID, M.DATE, D.NAME, D.PRICE from RESTAURANT R
+        left JOIN (select * from MENU M1 where M1.DATE = TODAY) as M
+        on R.ID = M.RESTAURANT_ID
+        left join (select * from DISHES inner join DISH D2 on DISHES.DISH_ID = D2.ID) as D on M.ID = D.MENU_ID
