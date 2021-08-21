@@ -1,20 +1,43 @@
 package ru.kosmos.restaurantratingsystem.model;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Set;
 
 @Entity
+@NamedEntityGraphs({
+        @NamedEntityGraph(
+                name = "allJoined",
+                attributeNodes = {
+                        @NamedAttributeNode(value = "menues", subgraph = "menues-sub")
+                },
+                subgraphs = {
+                        @NamedSubgraph(
+                                name = "menues-sub",
+                                attributeNodes = {
+                                        @NamedAttributeNode(value = "dishes", subgraph = "dishes-sub"),
+                                        @NamedAttributeNode(value = "votes"),
+                                }
+                        ),
+                        @NamedSubgraph(
+                                name = "dishes-sub",
+                                attributeNodes = {
+                                        @NamedAttributeNode(value = "dish")
+                                }
+                        )
+                }
+        )
+})
 @Table(name = "restaurant")
 public class Restaurant extends AbstractNamedEntity {
 
     @OneToMany(mappedBy = "restaurant")
-    private List<Menu> menues;
+    private Set<Menu> menues;
 
-    public List<Menu> getMenues() {
+    public Set<Menu> getMenues() {
         return menues;
     }
 
-    public void setMenues(List<Menu> menues) {
+    public void setMenues(Set<Menu> menues) {
         this.menues = menues;
     }
 
@@ -23,10 +46,10 @@ public class Restaurant extends AbstractNamedEntity {
 
     @Override
     public String toString() {
-        return "Restaurant{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", menues=" + menues +
-                '}';
+        return "\nRestaurant{" +
+                "id rest=" + id +
+                ", name='" + name +
+                ",\n menues=" + menues +
+                "}\n";
     }
 }

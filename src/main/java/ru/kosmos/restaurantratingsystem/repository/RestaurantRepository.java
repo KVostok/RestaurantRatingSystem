@@ -1,6 +1,7 @@
 package ru.kosmos.restaurantratingsystem.repository;
 
 import org.springframework.data.domain.Sort;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.stereotype.Repository;
 import ru.kosmos.restaurantratingsystem.model.Restaurant;
 
@@ -28,7 +29,7 @@ public class RestaurantRepository {
         return repository.findById(id).orElse(null);
     }
 
-    public List<Restaurant> getAllRest() {
-        return repository.getAllRest(LocalDate.now());
+    public List<Restaurant> getAll() {
+        return repository.findAll(LocalDate.now());
     }
 }

@@ -20,7 +20,7 @@ public class RestaurantService {
         this.menuRepository = menuRepository;
     }
 
-    public List<Restaurant> getAllRest() {
-        return restaurantRepository.getAllRest();
+    public List<Restaurant> getAll() {
+        return restaurantRepository.getAll();
     }
 }

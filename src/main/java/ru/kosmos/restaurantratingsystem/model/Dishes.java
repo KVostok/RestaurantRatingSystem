@@ -1,10 +1,9 @@
 package ru.kosmos.restaurantratingsystem.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.validator.constraints.Range;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "dishes")
@@ -12,6 +11,16 @@ public class Dishes extends AbstractBaseEntity{
     @Column(name = "price", nullable = false, columnDefinition = "int default 0")
     @Range(max = 50000)
     private Integer price;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MENU_ID", nullable = false)
+    @JsonBackReference
+    private Menu menu;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "DISH_ID", nullable = false)
+    @JsonBackReference
+    private Dish dish;
 
     public Dishes() {
     }
@@ -31,9 +40,10 @@ public class Dishes extends AbstractBaseEntity{
 
     @Override
     public String toString() {
-        return "Dishes{" +
+        return "\nDishes{" +
                 "price=" + price +
-                ", id=" + id +
+                ", dish=" + dish +
+                ", id dishes=" + id +
                 '}';
     }
 }

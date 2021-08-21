@@ -6,6 +6,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -28,6 +29,12 @@ public class Users extends AbstractNamedEntity {
     @Column(name = "registered", nullable = false, columnDefinition = "timestamp default now()")
     @NotNull
     private Date registered = new Date();
+
+    @OneToMany(mappedBy = "users")
+    private Set<Votes> votes;
+
+    @OneToMany(mappedBy = "users")
+    private Set<Roles> roles;
 
     public Users() {
     }

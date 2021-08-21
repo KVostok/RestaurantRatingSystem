@@ -5,9 +5,10 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.Set;
 
 @Entity
-@Table(name = "MENU")
+@Table(name = "menu")
 public class Menu extends AbstractBaseEntity{
     @Column(name = "DATE", nullable = false)
     @NotNull
@@ -17,6 +18,12 @@ public class Menu extends AbstractBaseEntity{
     @JoinColumn(name = "RESTAURANT_ID", nullable = false)
     @JsonBackReference
     private Restaurant restaurant;
+
+    @OneToMany(mappedBy = "menu")
+    private Set<Dishes> dishes;
+
+    @OneToMany(mappedBy = "menu")
+    private Set<Votes> votes;
 
     public Menu() {
     }
@@ -36,9 +43,11 @@ public class Menu extends AbstractBaseEntity{
 
     @Override
     public String toString() {
-        return "Menu{" +
+        return "\nMenu{" +
                 "date=" + date +
-                ", id=" + id +
+                ",\n dishes=" + dishes +
+                ",\n votes=" + votes +
+                ",\n id menu=" + id +
                 '}';
     }
 }
