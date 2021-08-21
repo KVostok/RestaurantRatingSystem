@@ -27,7 +27,7 @@ public interface CrudRestaurantRepository extends JpaRepository<Restaurant, Inte
             "left join d.dish d1 " +
             "left join m.votes v " +
             "order by r.name")
-    List<Restaurant> findAll(LocalDate today);
+    List<Restaurant> findAllRestaurantWithMenuWithDishesWithVotesByDateIsNow(LocalDate today);
 
 
 }

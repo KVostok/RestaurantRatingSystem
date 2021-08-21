@@ -9,7 +9,7 @@ import ru.kosmos.restaurantratingsystem.ActiveDbProfileResolver;
 import ru.kosmos.restaurantratingsystem.TimingExtension;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
-import static ru.kosmos.restaurantratingsystem.util.ValidationUtil.getRootCause;
+import static ru.kosmos.restaurantratingsystem.util.validation.ValidationUtil.getRootCause;
 
 @SpringJUnitConfig(locations = {
         "classpath:spring/spring-app.xml",

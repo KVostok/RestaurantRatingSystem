@@ -1,14 +1,15 @@
 package ru.kosmos.restaurantratingsystem.model;
 
 import org.hibernate.Hibernate;
-import org.springframework.data.domain.Persistable;
+
 import org.springframework.util.Assert;
+import ru.kosmos.restaurantratingsystem.HasId;
 
 import javax.persistence.*;
 
 @MappedSuperclass
 @Access(AccessType.FIELD)
-public abstract class AbstractBaseEntity implements Persistable<Integer> {
+public abstract class AbstractBaseEntity implements HasId {
 
     public static final Integer START_SEQ = 10000;
 
