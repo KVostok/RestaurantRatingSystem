@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 public class RootController {
     @GetMapping("/")
     public String root() {
-        return "redirect:/restaurants";
+        return "redirect:rest/restaurants";
     }
 
     @GetMapping("/users")

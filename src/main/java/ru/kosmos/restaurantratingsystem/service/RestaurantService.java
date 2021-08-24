@@ -18,12 +18,12 @@ public class RestaurantService {
         this.restaurantRepository = restaurantRepository;
     }
 
-    public List<Restaurant> getAllRestaurantWithMenuByDateIsNow() {
-        return restaurantRepository.getAllRestaurantWithMenuWithDishesWithVotesByDateIsNow();
+    public List<Restaurant> getAllWithMenu() {
+        return restaurantRepository.getAllWithMenu();
     }
 
-    public List<Restaurant> getAllRestaurants() {
-        return restaurantRepository.getAllRestaurants();
+    public List<Restaurant> getAll() {
+        return restaurantRepository.getAll();
     }
 
     public Restaurant get(int id) {

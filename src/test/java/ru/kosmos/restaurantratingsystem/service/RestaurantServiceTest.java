@@ -18,8 +18,8 @@ class RestaurantServiceTest extends AbstractServiceTest{
     protected RestaurantService service;
 
     @Test
-    void getAllRestaurantWithMenuByDateIsNow() {
-        List<Restaurant> all = service.getAllRestaurantWithMenuByDateIsNow();
+    void getAllWithMenu() {
+        List<Restaurant> all = service.getAllWithMenu();
         log.info("getAllRestaurantWithMenuByDateIsNow {}", all);
     }
 

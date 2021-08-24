@@ -10,6 +10,7 @@ import java.util.List;
 @Repository
 public class RestaurantRepository {
     private static final Sort SORT_NAME = Sort.by(Sort.Direction.ASC, "name");
+    private static final LocalDate TODAY = LocalDate.now();
     private final CrudRestaurantRepository repository;
 
     public RestaurantRepository(CrudRestaurantRepository repository) {
@@ -28,11 +29,11 @@ public class RestaurantRepository {
         return repository.findById(id).orElse(null);
     }
 
-    public List<Restaurant> getAllRestaurantWithMenuWithDishesWithVotesByDateIsNow() {
-        return repository.findAllRestaurantWithMenuWithDishesWithVotesByDateIsNow(LocalDate.now());
+    public List<Restaurant> getAllWithMenu() {
+        return repository.findAllRestaurantWithMenuWithDishesWithVotesByDateIsNow(TODAY);
     }
 
-    public List<Restaurant> getAllRestaurants() {
+    public List<Restaurant> getAll() {
         return repository.findAll(SORT_NAME);
     }
 }

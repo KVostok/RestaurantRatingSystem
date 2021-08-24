@@ -41,13 +41,13 @@ public abstract class AbstractRestaurantController {
         restaurantService.update(restaurant);
     }
 
-    public List<RestaurantDTO> getAllRestaurantWithMenu() {
-        log.info("getAllRestaurantWithMenu");
-        return RestaurantUtil.getDTOs(restaurantService.getAllRestaurantWithMenuByDateIsNow());
+    public List<RestaurantDTO> getAllWithMenu() {
+        log.info("getAllWithMenu");
+        return RestaurantUtil.getDTOs(restaurantService.getAllWithMenu());
     }
 
     public List<RestaurantDTO> getAll() {
-        log.info("getAllRestaurant");
-        return RestaurantUtil.getDTOs(restaurantService.getAllRestaurants());
+        log.info("getAll");
+        return RestaurantUtil.getDTOs(restaurantService.getAll());
     }
 }

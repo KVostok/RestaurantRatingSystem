@@ -14,6 +14,9 @@ public class Votes extends AbstractBaseEntity{
     @OrderColumn
     private Menu menu;
 
+    @Column(name = "user_id", nullable = false)
+    private Integer userId;
+
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID", nullable = false)
     @JsonBackReference
@@ -26,7 +29,8 @@ public class Votes extends AbstractBaseEntity{
     @Override
     public String toString() {
         return "Votes{" +
-                "id vote=" + id +
+                "userId=" + userId +
+                ", id=" + id +
                 '}';
     }
 }
