@@ -23,6 +23,10 @@ public class Votes extends AbstractBaseEntity{
     @OrderColumn
     private Users users;
 
+    public Integer getUserId() {
+        return userId;
+    }
+
     public Votes() {
     }
 

@@ -4,7 +4,7 @@ import ru.kosmos.restaurantratingsystem.model.AbstractBaseEntity;
 
 public class SecurityUtil {
 
-    private static int id = AbstractBaseEntity.START_SEQ;
+    private static int id = AbstractBaseEntity.START_SEQ+1;
 
     private SecurityUtil() {
     }

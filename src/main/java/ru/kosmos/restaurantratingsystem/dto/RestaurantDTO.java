@@ -10,20 +10,29 @@ public class RestaurantDTO extends BaseDTO{
 
     private final String name;
     private final Set<Menu> menues;
+    private final Integer rating;
+    private final boolean isVoted;
 
-    @ConstructorProperties({"id", "name", "menues"})
-    public RestaurantDTO(Integer id, String name, Set<Menu> menues) {
+    @ConstructorProperties({"id", "name", "menues", "rating"})
+    public RestaurantDTO(Integer id, String name, Set<Menu> menues, Integer rating, boolean isVoted) {
         super(id);
         this.name = name;
         this.menues = menues;
+        this.rating = rating;
+        this.isVoted = isVoted;
     }
 
     public String getName() {
         return name;
     }
-
     public Set<Menu> getMenues() {
         return menues;
+    }
+    public Integer getRating() {
+        return rating;
+    }
+    public boolean isVoted() {
+        return isVoted;
     }
 
     @Override
@@ -31,12 +40,14 @@ public class RestaurantDTO extends BaseDTO{
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         RestaurantDTO that = (RestaurantDTO) o;
-        return Objects.equals(getName(), that.getName());
+        return isVoted() == that.isVoted() &&
+                Objects.equals(getName(), that.getName()) &&
+                Objects.equals(getRating(), that.getRating());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getName());
+        return Objects.hash(getName(), getRating(), isVoted());
     }
 
     @Override
@@ -44,6 +55,8 @@ public class RestaurantDTO extends BaseDTO{
         return "RestaurantDTO{" +
                 "name='" + name + '\'' +
                 ", menues=" + menues +
+                ", rating=" + rating +
+                ", isVoted=" + isVoted +
                 ", id=" + id +
                 '}';
     }

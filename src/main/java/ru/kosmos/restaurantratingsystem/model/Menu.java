@@ -22,6 +22,7 @@ public class Menu extends AbstractBaseEntity{
     @OneToMany(mappedBy = "menu")
     private Set<Dishes> dishes;
 
+    //@JsonBackReference
     @OneToMany(mappedBy = "menu")
     private Set<Votes> votes;
 
@@ -39,6 +40,10 @@ public class Menu extends AbstractBaseEntity{
 
     public void setDate(LocalDate date) {
         this.date = date;
+    }
+
+    public Set<Votes> getVotes() {
+        return votes;
     }
 
     @Override
