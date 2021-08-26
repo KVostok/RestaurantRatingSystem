@@ -1,6 +1,5 @@
 package ru.kosmos.restaurantratingsystem.util;
 
-import org.springframework.util.Assert;
 import ru.kosmos.restaurantratingsystem.dto.RestaurantDTO;
 import ru.kosmos.restaurantratingsystem.model.Menu;
 import ru.kosmos.restaurantratingsystem.model.Restaurant;
@@ -19,7 +18,6 @@ public class RestaurantUtil {
     }
 
     public static RestaurantDTO createDTO(Restaurant restaurant) {
-        Assert.notNull(restaurant, "restaurant must not be null");
         Menu menu = restaurant.getMenues().stream().findFirst().orElse(null);
         if (menu == null)
             return new RestaurantDTO(restaurant.getId(), restaurant.getName(), restaurant.getMenues(), 0, false);

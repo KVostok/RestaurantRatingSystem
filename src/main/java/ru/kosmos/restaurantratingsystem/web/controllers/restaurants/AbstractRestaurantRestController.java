@@ -1,4 +1,4 @@
-package ru.kosmos.restaurantratingsystem.web;
+package ru.kosmos.restaurantratingsystem.web.controllers.restaurants;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,7 +13,7 @@ import java.util.List;
 import static ru.kosmos.restaurantratingsystem.util.validation.ValidationUtil.assureIdConsistent;
 import static ru.kosmos.restaurantratingsystem.util.validation.ValidationUtil.checkNew;
 
-public abstract class AbstractRestaurantController {
+public abstract class AbstractRestaurantRestController {
     private final Logger log = LoggerFactory.getLogger(getClass());
 
     @Autowired

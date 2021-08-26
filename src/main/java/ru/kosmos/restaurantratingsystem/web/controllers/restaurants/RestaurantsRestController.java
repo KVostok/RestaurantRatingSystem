@@ -1,4 +1,4 @@
-package ru.kosmos.restaurantratingsystem.web;
+package ru.kosmos.restaurantratingsystem.web.controllers.restaurants;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -15,7 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = RestaurantsRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
-public class RestaurantsRestController extends AbstractRestaurantController{
+public class RestaurantsRestController extends AbstractRestaurantRestController {
 
     static final String REST_URL = "/rest/restaurants";
 
