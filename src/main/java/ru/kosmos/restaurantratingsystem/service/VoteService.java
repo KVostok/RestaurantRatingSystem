@@ -29,8 +29,9 @@ public class VoteService {
         checkNotFoundWithId(voteRepository.delete(id), id);
     }
 
-    public Votes create(Votes votes) {
-        Assert.notNull(votes, "Votes must not be null");
+    public Votes create(int menuId, int userId) {
+        Votes votes = new Votes(menuId, userId);
+        //TODO: 19-09-2021 implement logic
         return voteRepository.save(votes);
     }
 

@@ -14,27 +14,48 @@ public class Votes extends AbstractBaseEntity{
     @OrderColumn
     private Menu menu;
 
-    @Column(name = "user_id", nullable = false)
-    private Integer userId;
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID", nullable = false)
     @JsonBackReference
     @OrderColumn
     private Users users;
 
+    @Column(name = "USER_ID", nullable = false)
+    private Integer userId;
+
+    @Column(name = "MENU_ID", nullable = false)
+    private Integer menuId;
+
     public Integer getUserId() {
         return userId;
+    }
+
+    public Integer getMenuId() {
+        return menuId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
+    public void setMenuId(Integer menuId) {
+        this.menuId = menuId;
     }
 
     public Votes() {
     }
 
+    public Votes(Integer menuId, Integer userId) {
+        this.menuId = menuId;
+        this.userId = userId;
+    }
+
     @Override
     public String toString() {
         return "Votes{" +
-                "userId=" + userId +
-                ", id=" + id +
+                "id=" + id +
+                ", userId=" + userId +
+                ", menuId=" + menuId +
                 '}';
     }
 }
