@@ -32,7 +32,7 @@ public abstract class AbstractVoteRestController {
 
     public Votes create(int menuId) {
         int userId = SecurityUtil.authUserId();
-        log.info("create vote for menu with id {}", menuId);
+        log.info("create vote for menu with id {} and  user with id {}", menuId, userId);
         return voteService.create(menuId, userId);
     }
 

@@ -30,8 +30,11 @@ public class VoteService {
     }
 
     public Votes create(int menuId, int userId) {
-        Votes votes = new Votes(menuId, userId);
-        //TODO: 19-09-2021 implement logic
+        Votes votes = voteRepository.getWithMenuForUserWithId(userId);
+        if (votes == null) {
+             votes = new Votes(userId);
+             votes.
+        }
         return voteRepository.save(votes);
     }
 
