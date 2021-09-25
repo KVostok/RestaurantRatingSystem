@@ -30,10 +30,10 @@ public class Users extends AbstractNamedEntity {
     @NotNull
     private Date registered = new Date();
 
-    @OneToMany(mappedBy = "users")
+    @OneToMany(mappedBy = "user")
     private Set<Votes> votes;
 
-    @OneToMany(mappedBy = "users")
+    @OneToMany(mappedBy = "user")
     private Set<Roles> roles;
 
     public Users() {

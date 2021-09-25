@@ -19,13 +19,12 @@ public class RestaurantUtil {
 
     public static RestaurantDTO createDTO(Restaurant restaurant) {
         Menu menu = restaurant.getMenues().stream().findFirst().orElse(null);
-        if (menu == null)
+        if (menu == null || menu.getVotes() == null)
             return new RestaurantDTO(restaurant.getId(), restaurant.getName(), restaurant.getMenues(), 0, false);
+
         Set<Votes> votes = menu.getVotes();
-        if (votes == null)
-            return new RestaurantDTO(restaurant.getId(), restaurant.getName(), restaurant.getMenues(), 0, false);
         Integer countVotes = votes.size();
-        boolean isVoted = votes.stream().anyMatch(votes1 -> votes1.getUserId() == SecurityUtil.authUserId());
+        boolean isVoted = votes.stream().anyMatch(votes1 -> votes1.getUser().getId() == SecurityUtil.authUserId());
         return new RestaurantDTO(restaurant.getId(), restaurant.getName(), restaurant.getMenues(), countVotes, isVoted);
     }
 }
