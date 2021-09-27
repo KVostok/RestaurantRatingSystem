@@ -37,13 +37,6 @@ public class Restaurant extends AbstractNamedEntity {
         return menues;
     }
 
-    public void setMenues(Set<Menu> menues) {
-        this.menues = menues;
-    }
-
-    public Restaurant() {
-    }
-
     @Override
     public String toString() {
         return "\nRestaurant{" +

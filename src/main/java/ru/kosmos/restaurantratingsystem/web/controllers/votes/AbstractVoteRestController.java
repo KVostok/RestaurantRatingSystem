@@ -12,7 +12,6 @@ import ru.kosmos.restaurantratingsystem.web.SecurityUtil;
 import java.util.List;
 
 import static ru.kosmos.restaurantratingsystem.util.validation.ValidationUtil.assureIdConsistent;
-import static ru.kosmos.restaurantratingsystem.util.validation.ValidationUtil.checkNew;
 
 public abstract class AbstractVoteRestController {
     private final Logger log = LoggerFactory.getLogger(getClass());
@@ -32,8 +31,8 @@ public abstract class AbstractVoteRestController {
 
     public Votes create(int menuId) {
         int userId = SecurityUtil.authUserId();
-        log.info("create vote for menu with id {} and  user with id {}", menuId, userId);
-        return voteService.create(menuId, userId);
+        log.info("create vote of user with id {} for menu with id {}", userId, menuId);
+        return voteService.create(userId, menuId);
     }
 
     public void update(Votes votes, int id) {

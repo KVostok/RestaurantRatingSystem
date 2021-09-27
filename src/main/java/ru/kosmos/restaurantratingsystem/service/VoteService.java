@@ -1,15 +1,17 @@
 package ru.kosmos.restaurantratingsystem.service;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import ru.kosmos.restaurantratingsystem.model.Votes;
 import ru.kosmos.restaurantratingsystem.repository.MenuRepository;
 import ru.kosmos.restaurantratingsystem.repository.UserRepository;
 import ru.kosmos.restaurantratingsystem.repository.VoteRepository;
+import ru.kosmos.restaurantratingsystem.util.exception.VoteCantBeChangedException;
 
 import java.util.List;
 
-import static ru.kosmos.restaurantratingsystem.util.validation.ValidationUtil.checkNotFoundWithId;
+import static ru.kosmos.restaurantratingsystem.util.validation.ValidationUtil.*;
 
 @Service
 public class VoteService {
@@ -35,15 +37,17 @@ public class VoteService {
         checkNotFoundWithId(voteRepository.delete(id), id);
     }
 
-    public Votes create(int menuId, int userId) {
-        Votes votes = voteRepository.getWithMenuForUserWithId(userId);
-        if (votes == null) {
-            votes = new Votes(menuRepository.get(menuId), userRepository.get(userId));
-        }
-        else {
+    @Transactional
+    public Votes create(int userId, int menuId) {
+        Votes votes = voteRepository.getForUser(userId);
 
-        }
-        return voteRepository.save(votes);
+        if (votes == null)
+            return voteRepository.save(new Votes(menuRepository.get(menuId), userRepository.get(userId)));
+        if (!TIME_NOW.isBefore(TIME_CONSTRAINT))
+            throw new VoteCantBeChangedException("Vote can't be changed after 11-00");
+
+        votes.setMenu(menuRepository.get(menuId));
+        return update(votes);
     }
 
     public Votes update(Votes votes) {

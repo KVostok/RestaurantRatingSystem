@@ -3,12 +3,12 @@ package ru.kosmos.restaurantratingsystem.repository;
 import org.springframework.stereotype.Repository;
 import ru.kosmos.restaurantratingsystem.model.Votes;
 
-import java.time.LocalDate;
 import java.util.List;
+
+import static ru.kosmos.restaurantratingsystem.util.validation.ValidationUtil.TODAY;
 
 @Repository
 public class VoteRepository {
-    private static final LocalDate TODAY = LocalDate.now();
     private final CrudVoteRepository repository;
 
     public VoteRepository(CrudVoteRepository repository) {
@@ -19,8 +19,8 @@ public class VoteRepository {
         return repository.save(votes);
     }
 
-    public Votes getWithMenuForUserWithId(int userId) {
-        return repository.getWithMenuForUserByDateIsNow(userId, TODAY).orElse(null);
+    public Votes getForUser(int userId) {
+        return repository.getWithMenuForUserOnToday(userId, TODAY).orElse(null);
     }
 
     public boolean delete(int id) {

@@ -4,13 +4,13 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 import ru.kosmos.restaurantratingsystem.model.Restaurant;
 
-import java.time.LocalDate;
 import java.util.List;
+
+import static ru.kosmos.restaurantratingsystem.util.validation.ValidationUtil.TODAY;
 
 @Repository
 public class RestaurantRepository {
     private static final Sort SORT_NAME = Sort.by(Sort.Direction.ASC, "name");
-    private static final LocalDate TODAY = LocalDate.now();
     private final CrudRestaurantRepository repository;
 
     public RestaurantRepository(CrudRestaurantRepository repository) {

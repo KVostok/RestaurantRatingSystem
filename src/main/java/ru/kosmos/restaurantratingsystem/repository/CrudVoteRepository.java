@@ -18,6 +18,6 @@ public interface CrudVoteRepository extends JpaRepository<Votes, Integer> {
     @Query("DELETE FROM Votes v WHERE v.id=:id")
     int delete(@Param("id") int id);
 
-    @Query("select v.id from Votes v join v.menu m where v.user.id=:user_id and m.date=:today")
-    Optional<Votes> getWithMenuForUserByDateIsNow(@Param("user_id") int id, @Param("today") LocalDate today);
+    @Query("select v from Votes v join v.menu m where v.user.id=:user_id and m.date=:today")
+    Optional<Votes> getWithMenuForUserOnToday(@Param("user_id") int userId, @Param("today") LocalDate today);
 }
