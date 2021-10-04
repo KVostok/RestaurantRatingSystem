@@ -45,9 +45,4 @@ public abstract class AbstractRestaurantRestController {
         log.info("getAllWithMenu");
         return RestaurantUtil.getDTOs(restaurantService.getAllWithMenu());
     }
-
-    public List<RestaurantDTO> getAll() {
-        log.info("getAll");
-        return RestaurantUtil.getDTOs(restaurantService.getAll());
-    }
 }

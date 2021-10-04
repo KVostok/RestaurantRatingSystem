@@ -54,9 +54,4 @@ public class RestaurantsRestController extends AbstractRestaurantRestController 
         return super.getAllWithMenu();
     }
 
-    @Override
-    @GetMapping("/simple")
-    public List<RestaurantDTO> getAll() {
-        return super.getAll();
-    }
 }

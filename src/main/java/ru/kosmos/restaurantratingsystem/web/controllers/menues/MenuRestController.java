@@ -7,11 +7,9 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ru.kosmos.restaurantratingsystem.View;
-import ru.kosmos.restaurantratingsystem.dto.MenuDTO;
 import ru.kosmos.restaurantratingsystem.model.Menu;
 
 import java.net.URI;
-import java.util.List;
 
 @RestController
 @RequestMapping(value = MenuRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -45,11 +43,5 @@ public class MenuRestController extends AbstractMenuRestController{
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@Validated(View.Web.class) @RequestBody Menu menu, @PathVariable int id) {
         super.update(menu, id);
-    }
-
-    @Override
-    @GetMapping
-    public List<MenuDTO> getAll() {
-        return super.getAll();
     }
 }

@@ -5,8 +5,6 @@ import org.springframework.util.Assert;
 import ru.kosmos.restaurantratingsystem.model.Menu;
 import ru.kosmos.restaurantratingsystem.repository.MenuRepository;
 
-import java.util.List;
-
 import static ru.kosmos.restaurantratingsystem.util.validation.ValidationUtil.checkNotFoundWithId;
 
 @Service
@@ -15,10 +13,6 @@ public class MenuService {
 
     public MenuService(MenuRepository menuRepository) {
         this.menuRepository = menuRepository;
-    }
-
-    public List<Menu> getAll() {
-        return menuRepository.getAll();
     }
 
     public Menu get(int id) {

@@ -3,12 +3,8 @@ package ru.kosmos.restaurantratingsystem.web.controllers.menues;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import ru.kosmos.restaurantratingsystem.dto.MenuDTO;
 import ru.kosmos.restaurantratingsystem.model.Menu;
 import ru.kosmos.restaurantratingsystem.service.MenuService;
-import ru.kosmos.restaurantratingsystem.util.MenuUtil;
-
-import java.util.List;
 
 import static ru.kosmos.restaurantratingsystem.util.validation.ValidationUtil.assureIdConsistent;
 import static ru.kosmos.restaurantratingsystem.util.validation.ValidationUtil.checkNew;
@@ -39,10 +35,5 @@ public abstract class AbstractMenuRestController {
         log.info("update menu {}", menu);
         assureIdConsistent(menu, id);
         menuService.update(menu);
-    }
-
-    public List<MenuDTO> getAll() {
-        log.info("getAll");
-        return MenuUtil.getDTOs(menuService.getAll());
     }
 }
