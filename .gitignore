@@ -5,3 +5,8 @@ target
 log
 *.patch
 restaurantvote
+/restaurantvote.lck
+/restaurantvote.log
+/restaurantvote.properties
+/restaurantvote.script
+/restaurantvote.tmp/
