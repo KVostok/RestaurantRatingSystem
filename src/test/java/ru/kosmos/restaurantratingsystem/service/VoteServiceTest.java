@@ -14,7 +14,7 @@ class VoteServiceTest extends AbstractServiceTest{
 
     @Test
     void create() {
-        Votes votes = service.create(10001, 10001);
+        Votes votes = service.create(10020, 10001);
         log.info("Create vote {}", votes);
     }
 }

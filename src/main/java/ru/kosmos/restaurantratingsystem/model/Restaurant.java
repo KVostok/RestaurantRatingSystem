@@ -1,5 +1,7 @@
 package ru.kosmos.restaurantratingsystem.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -30,6 +32,7 @@ import java.util.Set;
 @Table(name = "restaurant")
 public class Restaurant extends AbstractNamedEntity {
 
+    @JsonIgnore
     @OneToMany(mappedBy = "restaurant")
     private Set<Menu> menues;
 

@@ -4,9 +4,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 import ru.kosmos.restaurantratingsystem.model.Restaurant;
 
+import java.time.LocalDate;
 import java.util.List;
-
-import static ru.kosmos.restaurantratingsystem.util.validation.ValidationUtil.TODAY;
 
 @Repository
 public class RestaurantRepository {
@@ -22,7 +21,7 @@ public class RestaurantRepository {
     }
 
     public boolean delete(int id) {
-        return repository.delete(id) !=0;
+        return repository.delete(id) != 0;
     }
 
     public Restaurant get(int id) {
@@ -30,7 +29,7 @@ public class RestaurantRepository {
     }
 
     public List<Restaurant> getAllWithMenu() {
-        return repository.findAllRestaurantWithMenuWithDishesWithVotesByDateIsNow(TODAY);
+        return repository.findAllRestaurantWithMenuWithDishesWithVotesByDateIsNow(LocalDate.now());
     }
 
     public List<Restaurant> getAll() {

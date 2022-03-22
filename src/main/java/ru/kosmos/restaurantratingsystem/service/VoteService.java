@@ -2,39 +2,24 @@ package ru.kosmos.restaurantratingsystem.service;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.util.Assert;
 import ru.kosmos.restaurantratingsystem.model.Votes;
-import ru.kosmos.restaurantratingsystem.repository.MenuRepository;
-import ru.kosmos.restaurantratingsystem.repository.UserRepository;
 import ru.kosmos.restaurantratingsystem.repository.VoteRepository;
 import ru.kosmos.restaurantratingsystem.util.exception.VoteCantBeChangedException;
 
-import java.util.List;
+import java.time.LocalTime;
 
-import static ru.kosmos.restaurantratingsystem.util.validation.ValidationUtil.*;
+import static ru.kosmos.restaurantratingsystem.util.validation.ValidationUtil.TIME_CONSTRAINT;
 
 @Service
 public class VoteService {
     private final VoteRepository voteRepository;
-    private final MenuRepository menuRepository;
-    private final UserRepository userRepository;
+    private final MenuService menuService;
+    private final UserService userService;
 
-    public VoteService(VoteRepository voteRepository, MenuRepository menuRepository, UserRepository userRepository) {
+    public VoteService(VoteRepository voteRepository, MenuService menuService, UserService userService) {
         this.voteRepository = voteRepository;
-        this.menuRepository = menuRepository;
-        this.userRepository = userRepository;
-    }
-
-    public List<Votes> getAll() {
-        return voteRepository.getAll();
-    }
-
-    public Votes get(int id) {
-        return checkNotFoundWithId(voteRepository.get(id), id);
-    }
-
-    public void delete(int id) {
-        checkNotFoundWithId(voteRepository.delete(id), id);
+        this.menuService = menuService;
+        this.userService = userService;
     }
 
     @Transactional
@@ -42,16 +27,12 @@ public class VoteService {
         Votes votes = voteRepository.getForUser(userId);
 
         if (votes == null)
-            return voteRepository.save(new Votes(menuRepository.get(menuId), userRepository.get(userId)));
-        if (!TIME_NOW.isBefore(TIME_CONSTRAINT))
+            return voteRepository.save(new Votes(menuService.get(menuId), userService.get(userId)));
+        if (!LocalTime.now().isBefore(TIME_CONSTRAINT))
             throw new VoteCantBeChangedException("Vote can't be changed after 11-00");
 
-        votes.setMenu(menuRepository.get(menuId));
-        return update(votes);
-    }
-
-    public Votes update(Votes votes) {
-        Assert.notNull(votes, "Votes must not be null");
+        votes.setMenu(menuService.get(menuId));
         return voteRepository.save(votes);
     }
+
 }

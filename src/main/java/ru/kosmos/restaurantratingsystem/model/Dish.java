@@ -15,9 +15,6 @@ public class Dish extends AbstractNamedEntity {
     @JsonBackReference
     private Set<Dishes> dishes;
 
-    public Dish() {
-    }
-
     @Override
     public String toString() {
         return "Dish{" +

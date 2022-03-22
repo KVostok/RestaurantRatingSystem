@@ -7,15 +7,12 @@ import ru.kosmos.restaurantratingsystem.util.exception.IllegalRequestDataExcepti
 import ru.kosmos.restaurantratingsystem.util.exception.NotFoundException;
 
 import javax.validation.*;
-import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.Set;
 
 public class ValidationUtil {
 
-    public static final LocalDate TODAY = LocalDate.now();
-    public static final LocalTime TIME_NOW = LocalTime.now();
-    public static final LocalTime TIME_CONSTRAINT = LocalTime.of(11,00,00);
+    public static final LocalTime TIME_CONSTRAINT = LocalTime.of(11, 0, 0);
 
     private static final Validator validator;
 
