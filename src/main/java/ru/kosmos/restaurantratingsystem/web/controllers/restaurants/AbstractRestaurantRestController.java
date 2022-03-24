@@ -14,13 +14,14 @@ import static ru.kosmos.restaurantratingsystem.util.validation.ValidationUtil.as
 import static ru.kosmos.restaurantratingsystem.util.validation.ValidationUtil.checkNew;
 
 public abstract class AbstractRestaurantRestController {
+
     private final Logger log = LoggerFactory.getLogger(getClass());
 
     @Autowired
     private RestaurantService restaurantService;
 
     public Restaurant get(int id) {
-        log.info("get restaurant {}" , id);
+        log.info("get restaurant {}", id);
         return restaurantService.get(id);
     }
 
@@ -45,4 +46,5 @@ public abstract class AbstractRestaurantRestController {
         log.info("getAllWithMenu");
         return RestaurantUtil.getDTOs(restaurantService.getAllWithMenu());
     }
+
 }

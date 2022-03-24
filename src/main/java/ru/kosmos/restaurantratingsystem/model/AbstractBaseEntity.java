@@ -1,7 +1,6 @@
 package ru.kosmos.restaurantratingsystem.model;
 
 import org.hibernate.Hibernate;
-
 import org.springframework.util.Assert;
 import ru.kosmos.restaurantratingsystem.HasId;
 

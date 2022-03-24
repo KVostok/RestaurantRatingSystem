@@ -4,10 +4,11 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "dishes")
-public class Dishes extends AbstractBaseEntity{
+public class Dishes extends AbstractBaseEntity {
     @Column(name = "price", nullable = false, columnDefinition = "int default 0")
     @Range(max = 50000)
     private Integer price;
@@ -24,17 +25,17 @@ public class Dishes extends AbstractBaseEntity{
     public Dishes() {
     }
 
-    public Dishes(Integer id, @Range(max = 50000) Integer price) {
-        super(id);
+    public Dishes(@NotNull Dish dish, @NotNull Integer price) {
+        this.dish = dish;
         this.price = price;
     }
 
-    public Integer getPrice() {
-        return price;
+    public Menu getMenu() {
+        return menu;
     }
 
-    public void setPrice(Integer price) {
-        this.price = price;
+    public void setMenu(Menu menu) {
+        this.menu = menu;
     }
 
     @Override

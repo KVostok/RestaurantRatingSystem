@@ -16,10 +16,10 @@ public class MenuRepository {
     }
 
     public boolean delete(int id) {
-        return repository.delete(id) !=0;
+        return repository.delete(id) != 0;
     }
 
     public Menu get(int id) {
-        return repository.findById(id).orElse(null);
+        return repository.getWithDishes(id);
     }
 }

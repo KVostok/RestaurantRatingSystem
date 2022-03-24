@@ -1,6 +1,7 @@
 package ru.kosmos.restaurantratingsystem.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -9,7 +10,7 @@ import java.util.Set;
 
 @Entity
 @Table(name = "menu")
-public class Menu extends AbstractBaseEntity{
+public class Menu extends AbstractBaseEntity {
     @Column(name = "DATE", nullable = false)
     @NotNull
     private LocalDate date;
@@ -19,10 +20,10 @@ public class Menu extends AbstractBaseEntity{
     @JsonBackReference
     private Restaurant restaurant;
 
-    @OneToMany(mappedBy = "menu")
+    @OneToMany(mappedBy = "menu", cascade = CascadeType.ALL)
     private Set<Dishes> dishes;
 
-    //@JsonBackReference
+    @JsonIgnore
     @OneToMany(mappedBy = "menu")
     private Set<Votes> votes;
 
@@ -34,8 +35,13 @@ public class Menu extends AbstractBaseEntity{
         this.date = date;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public Menu(@NotNull Restaurant restaurant, @NotNull Set<Dishes> dishes) {
+        this.restaurant = restaurant;
+        //https://javascopes.com/jpa-hibernate-synchronize-bidirectional-entity-associations-2ccfb961/
+        //https://coderlessons.com/articles/java/rukovodstvo-dlia-nachinaiushchikh-po-jpa-i-hibernate-cascade-types
+        //https://sysout.ru/tipy-cascade-primer-na-hibernate-i-spring-boot/
+        dishes.forEach(d -> d.setMenu(this));
+        this.dishes = dishes;
     }
 
     public void setDate(LocalDate date) {
@@ -53,6 +59,7 @@ public class Menu extends AbstractBaseEntity{
                 ",\n dishes=" + dishes +
                 ",\n votes=" + votes +
                 ",\n id menu=" + id +
+                ",\n id restaurant=" + restaurant.id +
                 '}';
     }
 }

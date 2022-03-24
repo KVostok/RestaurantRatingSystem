@@ -12,6 +12,7 @@ import static ru.kosmos.restaurantratingsystem.util.validation.ValidationUtil.TI
 
 @Service
 public class VoteService {
+
     private final VoteRepository voteRepository;
     private final MenuService menuService;
     private final UserService userService;

@@ -34,4 +34,5 @@ public class JacksonObjectMapper extends ObjectMapper {
     public static ObjectMapper getMapper() {
         return MAPPER;
     }
+
 }

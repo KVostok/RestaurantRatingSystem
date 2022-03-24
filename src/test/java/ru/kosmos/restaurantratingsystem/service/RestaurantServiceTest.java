@@ -8,7 +8,8 @@ import ru.kosmos.restaurantratingsystem.model.Restaurant;
 
 import java.util.List;
 
-class RestaurantServiceTest extends AbstractServiceTest{
+class RestaurantServiceTest extends AbstractServiceTest {
+
     private final Logger log = LoggerFactory.getLogger(getClass());
     @Autowired
     protected RestaurantService service;

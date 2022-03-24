@@ -6,7 +6,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import ru.kosmos.restaurantratingsystem.model.Votes;
 
-class VoteServiceTest extends AbstractServiceTest{
+class VoteServiceTest extends AbstractServiceTest {
+
     private final Logger log = LoggerFactory.getLogger(getClass());
 
     @Autowired
@@ -17,4 +18,5 @@ class VoteServiceTest extends AbstractServiceTest{
         Votes votes = service.create(10020, 10001);
         log.info("Create vote {}", votes);
     }
+
 }

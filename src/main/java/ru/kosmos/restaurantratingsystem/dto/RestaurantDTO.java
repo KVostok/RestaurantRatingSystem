@@ -6,7 +6,7 @@ import java.beans.ConstructorProperties;
 import java.util.Objects;
 import java.util.Set;
 
-public class RestaurantDTO extends BaseDTO{
+public class RestaurantDTO extends BaseDTO {
 
     private final String name;
     private final Set<Menu> menues;
@@ -25,12 +25,11 @@ public class RestaurantDTO extends BaseDTO{
     public String getName() {
         return name;
     }
-    public Set<Menu> getMenues() {
-        return menues;
-    }
+
     public Integer getRating() {
         return rating;
     }
+
     public boolean isVoted() {
         return isVoted;
     }

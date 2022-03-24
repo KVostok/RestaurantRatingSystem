@@ -11,10 +11,11 @@ import java.util.List;
 import java.util.Set;
 
 public class RestaurantUtil {
+
     public static List<RestaurantDTO> getDTOs(Collection<Restaurant> restaurants) {
         return restaurants.stream()
-        .map(restaurant -> createDTO(restaurant))
-        .toList();
+                .map(RestaurantUtil::createDTO)
+                .toList();
     }
 
     public static RestaurantDTO createDTO(Restaurant restaurant) {
@@ -27,4 +28,5 @@ public class RestaurantUtil {
         boolean isVoted = votes.stream().anyMatch(votes1 -> votes1.getUser().getId() == SecurityUtil.authUserId());
         return new RestaurantDTO(restaurant.getId(), restaurant.getName(), restaurant.getMenues(), countVotes, isVoted);
     }
+
 }

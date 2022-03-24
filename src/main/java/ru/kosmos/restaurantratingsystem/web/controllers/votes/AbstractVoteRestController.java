@@ -8,6 +8,7 @@ import ru.kosmos.restaurantratingsystem.service.VoteService;
 import ru.kosmos.restaurantratingsystem.web.SecurityUtil;
 
 public abstract class AbstractVoteRestController {
+
     private final Logger log = LoggerFactory.getLogger(getClass());
 
     @Autowired

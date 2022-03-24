@@ -9,6 +9,7 @@ import java.util.List;
 
 @Repository
 public class RestaurantRepository {
+
     private static final Sort SORT_NAME = Sort.by(Sort.Direction.ASC, "name");
     private final CrudRestaurantRepository repository;
 
@@ -35,4 +36,5 @@ public class RestaurantRepository {
     public List<Restaurant> getAll() {
         return repository.findAll(SORT_NAME);
     }
+
 }

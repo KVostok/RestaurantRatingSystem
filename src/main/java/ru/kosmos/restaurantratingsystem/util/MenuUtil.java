@@ -2,18 +2,16 @@ package ru.kosmos.restaurantratingsystem.util;
 
 import ru.kosmos.restaurantratingsystem.dto.MenuDTO;
 import ru.kosmos.restaurantratingsystem.model.Menu;
+import ru.kosmos.restaurantratingsystem.model.Restaurant;
 
-import java.util.Collection;
-import java.util.List;
+import static ru.kosmos.restaurantratingsystem.util.DishesUtil.getSetOfEntity;
 
 public class MenuUtil {
-    public static List<MenuDTO> getDTOs(Collection<Menu> menues) {
-        return menues.stream()
-                .map(menu -> createDTO(menu))
-                .toList();
+
+    public static Menu asEntity(MenuDTO menuDto) {
+        Restaurant restaurant = new Restaurant();
+        restaurant.setId(menuDto.getRestaurantId());
+        return new Menu(restaurant, getSetOfEntity(menuDto.getDishes()));
     }
 
-    public static MenuDTO createDTO(Menu menu) {
-        return new MenuDTO(menu);
-    }
 }

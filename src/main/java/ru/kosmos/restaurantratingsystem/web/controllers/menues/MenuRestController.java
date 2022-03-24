@@ -7,13 +7,17 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import ru.kosmos.restaurantratingsystem.View;
+import ru.kosmos.restaurantratingsystem.dto.MenuDTO;
 import ru.kosmos.restaurantratingsystem.model.Menu;
 
 import java.net.URI;
 
+import static ru.kosmos.restaurantratingsystem.util.MenuUtil.asEntity;
+
 @RestController
 @RequestMapping(value = MenuRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
-public class MenuRestController extends AbstractMenuRestController{
+public class MenuRestController extends AbstractMenuRestController {
+
     static final String REST_URL = "/rest/menues";
 
     @Override
@@ -30,8 +34,9 @@ public class MenuRestController extends AbstractMenuRestController{
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Menu> createWithLocation(@Validated(View.Web.class) @RequestBody Menu menu) {
-        Menu created = super.create(menu);
+    public ResponseEntity<Menu> createWithLocation(@Validated(View.Web.class) @RequestBody MenuDTO menuDto) {
+
+        Menu created = super.create(asEntity(menuDto));
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path(REST_URL + "/{id}")
                 .buildAndExpand(created.getId()).toUri();
@@ -44,4 +49,5 @@ public class MenuRestController extends AbstractMenuRestController{
     public void update(@Validated(View.Web.class) @RequestBody Menu menu, @PathVariable int id) {
         super.update(menu, id);
     }
+
 }

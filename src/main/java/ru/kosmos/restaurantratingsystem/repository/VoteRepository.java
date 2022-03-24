@@ -7,6 +7,7 @@ import java.time.LocalDate;
 
 @Repository
 public class VoteRepository {
+
     private final CrudVoteRepository repository;
 
     public VoteRepository(CrudVoteRepository repository) {

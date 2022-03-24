@@ -51,4 +51,5 @@ public class UserService {
     public void update(Users users) {
         Assert.notNull(repository.save(users), "user must not be null");
     }
+
 }

@@ -6,7 +6,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "votes")
-public class Votes extends AbstractBaseEntity{
+public class Votes extends AbstractBaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MENU_ID", nullable = false)
@@ -30,10 +30,6 @@ public class Votes extends AbstractBaseEntity{
 
     public Users getUser() {
         return user;
-    }
-
-    public void setUser(Users user) {
-        this.user = user;
     }
 
     public Votes() {

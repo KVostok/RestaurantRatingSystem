@@ -9,6 +9,7 @@ import ru.kosmos.restaurantratingsystem.model.Users;
 
 @Transactional(readOnly = true)
 public interface CrudUserRepository extends JpaRepository<Users, Integer> {
+
     @Transactional
     @Modifying
     @Query("DELETE FROM Users u WHERE u.id=:id")

@@ -43,4 +43,5 @@ public class RestaurantService {
         Assert.notNull(restaurant, "restaurant must not be null");
         return restaurantRepository.save(restaurant);
     }
+
 }

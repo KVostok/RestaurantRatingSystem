@@ -1,6 +1,8 @@
 package ru.kosmos.restaurantratingsystem.model;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.Set;
 
 @Entity

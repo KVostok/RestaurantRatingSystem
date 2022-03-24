@@ -3,10 +3,8 @@ package ru.kosmos.restaurantratingsystem.dto;
 import ru.kosmos.restaurantratingsystem.HasId;
 
 public class BaseDTO implements HasId {
-    protected Integer id;
 
-    public BaseDTO() {
-    }
+    protected Integer id;
 
     public BaseDTO(Integer id) {
         this.id = id;
