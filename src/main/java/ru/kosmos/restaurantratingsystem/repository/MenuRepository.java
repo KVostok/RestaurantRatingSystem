@@ -15,11 +15,11 @@ public class MenuRepository {
         return repository.save(menu);
     }
 
-    public boolean delete(int id) {
-        return repository.delete(id) != 0;
+    public Menu getWithDishes(int id) {
+        return repository.getWithDishes(id);
     }
 
     public Menu get(int id) {
-        return repository.getWithDishes(id);
+        return repository.getById(id);
     }
 }

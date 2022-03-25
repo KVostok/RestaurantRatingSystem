@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import ru.kosmos.restaurantratingsystem.model.Menu;
 import ru.kosmos.restaurantratingsystem.service.MenuService;
 
-import static ru.kosmos.restaurantratingsystem.util.validation.ValidationUtil.assureIdConsistent;
 import static ru.kosmos.restaurantratingsystem.util.validation.ValidationUtil.checkNew;
 
 public abstract class AbstractMenuRestController {
@@ -16,26 +15,15 @@ public abstract class AbstractMenuRestController {
     @Autowired
     private MenuService menuService;
 
-    public Menu get(int id) {
+    public Menu getWithDishes(int id) {
         log.info("get menu {}", id);
-        return menuService.get(id);
-    }
-
-    public void delete(int id) {
-        log.info("delete menu {}", id);
-        menuService.delete(id);
+        return menuService.getWithDishes(id);
     }
 
     public Menu create(Menu menu) {
         log.info("create menu {}", menu);
         checkNew(menu);
         return menuService.create(menu);
-    }
-
-    public void update(Menu menu, int id) {
-        log.info("update menu {}", menu);
-        assureIdConsistent(menu, id);
-        menuService.update(menu);
     }
 
 }

@@ -22,10 +22,6 @@ public class RestaurantService {
         return restaurantRepository.getAllWithMenu();
     }
 
-    public List<Restaurant> getAll() {
-        return restaurantRepository.getAll();
-    }
-
     public Restaurant get(int id) {
         return checkNotFoundWithId(restaurantRepository.get(id), id);
     }
@@ -41,7 +37,7 @@ public class RestaurantService {
 
     public Restaurant update(Restaurant restaurant) {
         Assert.notNull(restaurant, "restaurant must not be null");
-        return restaurantRepository.save(restaurant);
+        return checkNotFoundWithId(restaurantRepository.save(restaurant), restaurant.id());
     }
 
 }

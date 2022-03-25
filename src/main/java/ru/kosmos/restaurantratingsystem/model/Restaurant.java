@@ -1,6 +1,7 @@
 package ru.kosmos.restaurantratingsystem.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import javax.persistence.*;
 import java.util.Set;
@@ -22,9 +23,7 @@ import java.util.Set;
                         ),
                         @NamedSubgraph(
                                 name = "dishes-sub",
-                                attributeNodes = {
-                                        @NamedAttributeNode(value = "dish")
-                                }
+                                attributeNodes = @NamedAttributeNode("dish")
                         )
                 }
         )
@@ -33,6 +32,7 @@ import java.util.Set;
 public class Restaurant extends AbstractNamedEntity {
 
     @JsonIgnore
+    @JsonManagedReference
     @OneToMany(mappedBy = "restaurant")
     private Set<Menu> menues;
 

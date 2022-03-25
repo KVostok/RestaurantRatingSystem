@@ -1,6 +1,5 @@
 package ru.kosmos.restaurantratingsystem.repository;
 
-import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Repository;
 import ru.kosmos.restaurantratingsystem.model.Restaurant;
 
@@ -10,7 +9,6 @@ import java.util.List;
 @Repository
 public class RestaurantRepository {
 
-    private static final Sort SORT_NAME = Sort.by(Sort.Direction.ASC, "name");
     private final CrudRestaurantRepository repository;
 
     public RestaurantRepository(CrudRestaurantRepository repository) {
@@ -31,10 +29,6 @@ public class RestaurantRepository {
 
     public List<Restaurant> getAllWithMenu() {
         return repository.findAllRestaurantWithMenuWithDishesWithVotesByDateIsNow(LocalDate.now());
-    }
-
-    public List<Restaurant> getAll() {
-        return repository.findAll(SORT_NAME);
     }
 
 }
