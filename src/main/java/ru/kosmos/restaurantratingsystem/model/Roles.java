@@ -18,6 +18,14 @@ public class Roles extends AbstractBaseEntity {
     @JsonBackReference
     private Role role;
 
+    public Users getUser() {
+        return user;
+    }
+
+    public Role getRole() {
+        return role;
+    }
+
     @Override
     public String toString() {
         return "Roles{" +

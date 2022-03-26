@@ -12,6 +12,10 @@ public class Role extends AbstractNamedEntity {
     @OneToMany(mappedBy = "role")
     private Set<Roles> roles;
 
+    public Set<Roles> getRoles() {
+        return roles;
+    }
+
     @Override
     public String toString() {
         return "Role{" +

@@ -54,6 +54,18 @@ public class Users extends AbstractNamedEntity {
         this(user.id, user.name, user.email, user.password, user.enabled, user.registered);
     }
 
+    public Set<Votes> getVotes() {
+        return votes;
+    }
+
+    public Set<Roles> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Roles> roles) {
+        this.roles = roles;
+    }
+
     public String getEmail() {
         return email;
     }

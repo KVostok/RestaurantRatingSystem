@@ -11,19 +11,4 @@ public class RootController {
         return "redirect:rest/restaurants";
     }
 
-    @GetMapping("/users")
-    public String getUsers() {
-        return "users";
-    }
-
-    @GetMapping("/login")
-    public String login() {
-        return "login";
-    }
-
-    @GetMapping("/restaurants")
-    public String getRestaurants() {
-        return "restaurants";
-    }
-
 }
