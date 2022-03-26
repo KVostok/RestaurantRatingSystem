@@ -31,19 +31,19 @@ public abstract class AbstractRestaurantRestController {
     }
 
     public Restaurant create(Restaurant restaurant) {
-        log.info("create {}", restaurant);
+        log.info("create restaurant {}", restaurant);
         checkNew(restaurant);
         return restaurantService.create(restaurant);
     }
 
     public void update(Restaurant restaurant, int id) {
-        log.info("update {}", restaurant);
+        log.info("update restaurant {} with id {}", restaurant, id);
         assureIdConsistent(restaurant, id);
         restaurantService.update(restaurant);
     }
 
     public List<RestaurantDTO> getAllWithMenu() {
-        log.info("getAllWithMenu");
+        log.info("getAllRestaurantsWithMenu");
         return RestaurantUtil.getDTOs(restaurantService.getAllWithMenu());
     }
 
