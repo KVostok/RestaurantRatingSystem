@@ -12,6 +12,9 @@
     <http pattern="/rest/**" use-expressions="true" name="restSecurityFilterChain" create-session="stateless">
         <http-basic/>
         <intercept-url pattern="/**" access="isAuthenticated()"/>
+        <intercept-url pattern="/swagger-ui.html" access="permitAll()"/>
+        <intercept-url pattern="/swagger-resources/**" access="permitAll()"/>
+        <intercept-url pattern="/v2/api-docs/**" access="permitAll()"/>
     </http>
 
     <beans:bean class="org.springframework.security.crypto.factory.PasswordEncoderFactories" id="passwordEncoder" factory-method="createDelegatingPasswordEncoder"/>

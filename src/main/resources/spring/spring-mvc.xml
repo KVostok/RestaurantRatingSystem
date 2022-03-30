@@ -35,6 +35,11 @@
     <!--  all resources inside folder src/main/webapp/resources are mapped so they can be referred to inside JSP files -->
     <mvc:resources mapping="/resources/**" location="/resources/"/>
 
+    <!--  Swagger2  https://medium.com/@andreymamontov/swagger-2-configuration-with-spring-xml-3cd643a12425 -->
+    <bean class="springfox.documentation.swagger2.configuration.Swagger2DocumentationConfiguration"/>
+    <mvc:resources mapping="/swagger-ui.html" location="classpath:/META-INF/resources/" />
+    <mvc:resources mapping="/webjars/**" location="classpath:/META-INF/resources/webjars/" />
+
     <!-- Включает поддержку аннотаций по безопасности-->
     <security:global-method-security secured-annotations="enabled"
                                      jsr250-annotations="enabled"

@@ -51,9 +51,6 @@ public class Users extends AbstractNamedEntity {
     @JsonManagedReference
     private Set<Roles> roles;
 
-    public Users() {
-    }
-
     public Set<Votes> getVotes() {
         return votes;
     }
