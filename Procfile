@@ -1,0 +1,1 @@
+web:    java $JAVA_OPTS -DREST_ROOT="." -jar --port $PORT target/*.war
