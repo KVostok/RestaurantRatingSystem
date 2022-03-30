@@ -10,9 +10,11 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 import ru.kosmos.restaurantratingsystem.AuthorizedUser;
 import ru.kosmos.restaurantratingsystem.dto.UsersDTO;
+import ru.kosmos.restaurantratingsystem.model.AbstractBaseEntity;
 import ru.kosmos.restaurantratingsystem.model.Users;
 import ru.kosmos.restaurantratingsystem.repository.UserRepository;
 import ru.kosmos.restaurantratingsystem.util.UsersUtil;
+import ru.kosmos.restaurantratingsystem.util.exception.UpdateRestrictionException;
 
 import java.util.List;
 
@@ -38,6 +40,7 @@ public class UserService implements UserDetailsService {
     }
 
     public void delete(int id) {
+        checkModificationAllowed(id);
         checkNotFoundWithId(repository.delete(id), id);
     }
 
@@ -60,17 +63,20 @@ public class UserService implements UserDetailsService {
 
     @Transactional
     public void enable(int id, boolean enabled) {
+        checkModificationAllowed(id);
         Users users = get(id);
         users.setEnabled(enabled);
     }
 
     public void update(Users users) {
         Assert.notNull(users, "user must not be null");
+        checkModificationAllowed(users.id());
         prepareAndSave(users);
     }
 
     @Transactional
     public void update(UsersDTO usersDto) {
+        checkModificationAllowed(usersDto.id());
         Users users = get(usersDto.id());
         prepareAndSave(UsersUtil.updateFromTo(users, usersDto));
     }
@@ -86,6 +92,12 @@ public class UserService implements UserDetailsService {
 
     private Users prepareAndSave(Users users) {
         return repository.save(prepareToSave(users, passwordEncoder));
+    }
+
+    protected void checkModificationAllowed(int id) {
+        if (id <= AbstractBaseEntity.START_SEQ + 10) {
+            throw new UpdateRestrictionException();
+        }
     }
 
 }

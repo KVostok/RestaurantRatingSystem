@@ -14,10 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
 import org.springframework.web.servlet.NoHandlerFoundException;
-import ru.kosmos.restaurantratingsystem.util.exception.ErrorInfo;
-import ru.kosmos.restaurantratingsystem.util.exception.ErrorType;
-import ru.kosmos.restaurantratingsystem.util.exception.IllegalRequestDataException;
-import ru.kosmos.restaurantratingsystem.util.exception.NotFoundException;
+import ru.kosmos.restaurantratingsystem.util.exception.*;
 import ru.kosmos.restaurantratingsystem.util.validation.ValidationUtil;
 
 import javax.servlet.http.HttpServletRequest;
@@ -30,6 +27,11 @@ import static ru.kosmos.restaurantratingsystem.util.exception.ErrorType.*;
 public class ExceptionInfoHandler {
 
     private static Logger log = LoggerFactory.getLogger(ExceptionInfoHandler.class);
+
+    @ExceptionHandler(ApplicationException.class)
+    public ResponseEntity<ErrorInfo> updateRestrictionError(HttpServletRequest req, ApplicationException appEx) {
+        return logAndGetErrorInfo(req, appEx, false, appEx.getType(), appEx.getMsgCode());
+    }
 
     //  http://stackoverflow.com/a/22358422/548473
     @ExceptionHandler(NotFoundException.class) //422
