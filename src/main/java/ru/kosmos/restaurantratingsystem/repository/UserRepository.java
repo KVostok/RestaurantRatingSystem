@@ -28,6 +28,10 @@ public class UserRepository {
         return repository.findById(id).orElse(null);
     }
 
+    public Users getByIdWithRoles(int id) {
+        return repository.getByIdWithRoles(id);
+    }
+
     public Users getByEmail(String email) {
         return repository.getByEmail(email);
     }

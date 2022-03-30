@@ -26,4 +26,5 @@ public class Dish extends AbstractNamedEntity {
                 ", id dish=" + id +
                 '}';
     }
+
 }

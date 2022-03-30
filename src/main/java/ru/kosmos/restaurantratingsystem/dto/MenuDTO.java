@@ -43,4 +43,5 @@ public class MenuDTO {
                 ", dishes=" + dishes +
                 '}';
     }
+
 }

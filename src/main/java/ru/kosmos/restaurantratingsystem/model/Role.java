@@ -1,6 +1,9 @@
 package ru.kosmos.restaurantratingsystem.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.Set;
@@ -9,7 +12,8 @@ import java.util.Set;
 @Table(name = "role")
 public class Role extends AbstractNamedEntity {
 
-    @OneToMany(mappedBy = "role")
+    @OneToMany(mappedBy = "role", fetch = FetchType.LAZY)
+    @JsonIgnore
     private Set<Roles> roles;
 
     public Set<Roles> getRoles() {
@@ -23,4 +27,5 @@ public class Role extends AbstractNamedEntity {
                 ", id=" + id +
                 '}';
     }
+
 }

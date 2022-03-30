@@ -48,4 +48,5 @@ public class Votes extends AbstractBaseEntity {
                 ", menuId=" + menu.getId() +
                 '}';
     }
+
 }

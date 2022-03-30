@@ -5,6 +5,7 @@ import ru.kosmos.restaurantratingsystem.model.Menu;
 
 @Repository
 public class MenuRepository {
+
     private final CrudMenuRepository repository;
 
     public MenuRepository(CrudMenuRepository repository) {
@@ -22,4 +23,5 @@ public class MenuRepository {
     public Menu get(int id) {
         return repository.getById(id);
     }
+
 }

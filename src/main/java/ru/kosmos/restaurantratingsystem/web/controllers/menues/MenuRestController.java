@@ -2,6 +2,7 @@ package ru.kosmos.restaurantratingsystem.web.controllers.menues;
 
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -15,6 +16,7 @@ import static ru.kosmos.restaurantratingsystem.util.MenuUtil.asEntity;
 
 @RestController
 @RequestMapping(value = MenuRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
+@Secured("ROLE_ADMIN")
 public class MenuRestController extends AbstractMenuRestController {
 
     static final String REST_URL = "/rest/menues";

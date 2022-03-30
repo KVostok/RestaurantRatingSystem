@@ -3,6 +3,7 @@ package ru.kosmos.restaurantratingsystem.web.controllers.dish;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
@@ -14,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = DishRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
+@Secured("ROLE_ADMIN")
 public class DishRestController extends AbstractDishRestController {
 
     static final String REST_URL = "/rest/dish";

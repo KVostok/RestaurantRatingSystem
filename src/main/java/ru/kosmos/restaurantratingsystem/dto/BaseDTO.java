@@ -6,6 +6,9 @@ public class BaseDTO implements HasId {
 
     protected Integer id;
 
+    public BaseDTO() {
+    }
+
     public BaseDTO(Integer id) {
         this.id = id;
     }
@@ -19,4 +22,5 @@ public class BaseDTO implements HasId {
     public void setId(Integer id) {
         this.id = id;
     }
+
 }

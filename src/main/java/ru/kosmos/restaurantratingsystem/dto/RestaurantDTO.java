@@ -59,4 +59,5 @@ public class RestaurantDTO extends BaseDTO {
                 ", id=" + id +
                 '}';
     }
+
 }

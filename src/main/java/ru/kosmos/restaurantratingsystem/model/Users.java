@@ -1,5 +1,11 @@
 package ru.kosmos.restaurantratingsystem.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import ru.kosmos.restaurantratingsystem.View;
+import ru.kosmos.restaurantratingsystem.util.validation.NoHtml;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -19,11 +25,14 @@ public class Users extends AbstractNamedEntity {
     @Email
     @NotBlank
     @Size(max = 100)
+    @NoHtml(groups = {View.Web.class})  // https://stackoverflow.com/questions/17480809
     private String email;
 
     @Column(name = "password", nullable = false)
     @NotBlank
     @Size(min = 5, max = 100)
+    // https://stackoverflow.com/a/12505165/548473
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     @Column(name = "enabled", nullable = false, columnDefinition = "bool default true")
@@ -31,27 +40,18 @@ public class Users extends AbstractNamedEntity {
 
     @Column(name = "registered", nullable = false, columnDefinition = "timestamp default now()")
     @NotNull
+    @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     private Date registered = new Date();
 
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private Set<Votes> votes;
 
     @OneToMany(mappedBy = "user")
+    @JsonManagedReference
     private Set<Roles> roles;
 
     public Users() {
-    }
-
-    public Users(Integer id, String name, @Email @NotBlank @Size(max = 100) String email, @NotBlank @Size(min = 5, max = 100) String password, boolean enabled, @NotNull Date registered) {
-        super(id, name);
-        this.email = email;
-        this.password = password;
-        this.enabled = enabled;
-        this.registered = registered;
-    }
-
-    public Users(Users user) {
-        this(user.id, user.name, user.email, user.password, user.enabled, user.registered);
     }
 
     public Set<Votes> getVotes() {

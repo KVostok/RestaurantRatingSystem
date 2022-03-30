@@ -63,4 +63,5 @@ public abstract class AbstractBaseEntity implements HasId {
     public int hashCode() {
         return id == null ? 0 : id;
     }
+
 }

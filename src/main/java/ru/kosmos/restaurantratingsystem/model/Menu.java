@@ -11,6 +11,7 @@ import java.util.Set;
 @Entity
 @Table(name = "menu")
 public class Menu extends AbstractBaseEntity {
+
     @Column(name = "DATE", nullable = false)
     @NotNull
     private LocalDate date;
@@ -62,4 +63,5 @@ public class Menu extends AbstractBaseEntity {
                 ",\n id restaurant=" + restaurant.id +
                 '}';
     }
+
 }

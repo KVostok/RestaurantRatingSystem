@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull;
 @Entity
 @Table(name = "dishes")
 public class Dishes extends AbstractBaseEntity {
+
     @Column(name = "price", nullable = false, columnDefinition = "int default 0")
     @Range(max = 50000)
     private Integer price;
@@ -46,4 +47,5 @@ public class Dishes extends AbstractBaseEntity {
                 ", id dishes=" + id +
                 '}';
     }
+
 }
