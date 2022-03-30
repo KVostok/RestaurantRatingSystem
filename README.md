@@ -22,5 +22,6 @@ Swagger REST Api Documentation:</br>
 <a href="http://localhost:8080/RestaurantRatingSystem/v2/api-docs">Api docs</a></br>
 <a href="http://localhost:8080/RestaurantRatingSystem/swagger-ui.html">Swagger-ui</a></br>
 (Authorize with: user1@yandex.ru / password for user role or admin@gmail.com / admin for admin role)
+
 ---
 <a href="https://kvostok.github.io/my-pet-projects/">Список моих пет-проектов на Github page</a>
