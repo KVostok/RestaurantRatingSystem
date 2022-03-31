@@ -1,1 +1,1 @@
-web:    java $JAVA_OPTS -DREST_ROOT="." -jar --port $PORT target/*.war
+web:    java $JAVA_OPTS -DREST_ROOT="." -jar target/dependency/webapp-runner.jar target/*.war --port $PORT
