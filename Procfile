@@ -1,1 +1,1 @@
-web:    java $JAVA_OPTS -DREST_ROOT="." -jar target/dependency/webapp-runner.jar target/*.war --port $PORT
+web: java -DREST_ROOT="/app" -jar target/dependency/webapp-runner.jar target/*.war --port 8080
