@@ -29,6 +29,8 @@ public class UserService implements UserDetailsService {
     private final UserRepository repository;
     private final PasswordEncoder passwordEncoder;
 
+    private boolean modificationRestriction = true;
+
     public UserService(UserRepository repository, PasswordEncoder passwordEncoder) {
         this.repository = repository;
         this.passwordEncoder = passwordEncoder;
@@ -95,9 +97,17 @@ public class UserService implements UserDetailsService {
     }
 
     protected void checkModificationAllowed(int id) {
-        if (id <= AbstractBaseEntity.START_SEQ + 10) {
+        if (modificationRestriction && id <= AbstractBaseEntity.START_SEQ + 10) {
             throw new UpdateRestrictionException();
         }
+    }
+
+    public void switchOfModificationRestriction() {
+        this.modificationRestriction = false;
+    }
+
+    public void switchOnModificationRestriction() {
+        this.modificationRestriction = true;
     }
 
 }

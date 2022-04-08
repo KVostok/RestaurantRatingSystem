@@ -61,6 +61,15 @@ public class Users extends AbstractNamedEntity {
         this.registered = registered;
     }
 
+    public Users(Users user) {
+        super(user.id(), user.getName());
+        this.email = user.getEmail();
+        this.password = user.getPassword();
+        this.enabled = user.isEnabled();
+        this.registered = user.getRegistered();
+        this.roles = user.getRoles();
+    }
+
     public Set<Votes> getVotes() {
         return votes;
     }
