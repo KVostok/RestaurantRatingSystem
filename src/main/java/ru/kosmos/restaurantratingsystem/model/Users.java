@@ -1,15 +1,11 @@
 package ru.kosmos.restaurantratingsystem.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import ru.kosmos.restaurantratingsystem.View;
 import ru.kosmos.restaurantratingsystem.util.validation.NoHtml;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -47,9 +43,23 @@ public class Users extends AbstractNamedEntity {
     @JsonIgnore
     private Set<Votes> votes;
 
-    @OneToMany(mappedBy = "user")
-    @JsonManagedReference
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private Set<Roles> roles;
+
+    public Users() {
+    }
+
+    public Users(Integer id, String name, String email, String password) {
+        this(id, name, email, password, true, new Date());
+    }
+
+    public Users(Integer id, String name, String email, String password, boolean enabled, Date registered) {
+        super(id, name);
+        this.email = email;
+        this.password = password;
+        this.enabled = enabled;
+        this.registered = registered;
+    }
 
     public Set<Votes> getVotes() {
         return votes;
@@ -106,4 +116,5 @@ public class Users extends AbstractNamedEntity {
                 ", registered=" + registered +
                 '}';
     }
+
 }

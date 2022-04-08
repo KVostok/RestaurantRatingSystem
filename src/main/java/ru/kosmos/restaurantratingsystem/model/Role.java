@@ -16,6 +16,13 @@ public class Role extends AbstractNamedEntity {
     @JsonIgnore
     private Set<Roles> roles;
 
+    public Role() {
+    }
+
+    public Role(Integer id, String name) {
+        super(id, name);
+    }
+
     public Set<Roles> getRoles() {
         return roles;
     }

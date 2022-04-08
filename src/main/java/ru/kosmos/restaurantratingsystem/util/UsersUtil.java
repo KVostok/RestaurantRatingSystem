@@ -18,6 +18,7 @@ public class UsersUtil {
     }
 
     public static Users prepareToSave(Users users, PasswordEncoder passwordEncoder) {
+        users.getRoles().forEach(roles -> roles.setUser(users));
         users.setPassword(passwordEncoder.encode(users.getPassword()));
         users.setEmail(users.getEmail().toLowerCase());
         return users;

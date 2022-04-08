@@ -11,6 +11,7 @@ import java.util.List;
 class RestaurantServiceTest extends AbstractServiceTest {
 
     private final Logger log = LoggerFactory.getLogger(getClass());
+
     @Autowired
     protected RestaurantService service;
 

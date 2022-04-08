@@ -18,6 +18,15 @@ public class Roles extends AbstractBaseEntity implements GrantedAuthority {
     @JoinColumn(name = "ROLE_ID", nullable = false)
     private Role role;
 
+    public Roles() {
+    }
+
+    public Roles(Integer id, Users user, Role role) {
+        super(id);
+        this.user = user;
+        this.role = role;
+    }
+
     public Users getUser() {
         return user;
     }
@@ -28,6 +37,10 @@ public class Roles extends AbstractBaseEntity implements GrantedAuthority {
 
     public void setRole(Role role) {
         this.role = role;
+    }
+
+    public void setUser(Users user) {
+        this.user = user;
     }
 
     //    https://stackoverflow.com/a/19542316/548473

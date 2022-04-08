@@ -9,7 +9,9 @@
     <packaging>war</packaging>
 
     <version>1.0-SNAPSHOT</version>
+
     <name>Restaurant rating system</name>
+    <url>https://restvoting-kvostok.koyeb.app/</url>
 
     <properties>
         <java.version>16</java.version>
@@ -20,17 +22,20 @@
         <spring.security.version>5.5.1</spring.security.version>
         <spring-data-jpa.version>2.5.2</spring-data-jpa.version>
         <jackson.version>2.12.4</jackson.version>
+
         <tomcat.version>9.0.48</tomcat.version>
 
         <!-- Logging -->
         <logback.version>1.2.3</logback.version>
         <slf4j.version>1.7.30</slf4j.version>
+
         <!--DB-->
         <hsqldb.version>2.6.0</hsqldb.version>
         <!--    Tests  -->
         <junit.jupiter.version>5.7.2</junit.jupiter.version>
         <assertj.version>3.19.0</assertj.version>
         <hamcrest.version>2.2</hamcrest.version>
+        <json-path.version>2.5.0</json-path.version>
 
         <!-- Hibernate -->
         <hibernate.version>5.5.2.Final</hibernate.version>
@@ -174,13 +179,6 @@
             <version>1.14.2</version>
         </dependency>
 
-        <!-- Cache -->
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-jcache</artifactId>
-            <version>${hibernate.version}</version>
-        </dependency>
-
         <!--http://hibernate.org/validator/documentation/getting-started/#unified-expression-language-el-->
         <dependency>
             <groupId>org.glassfish</groupId>
@@ -188,6 +186,15 @@
             <version>${javax-el.version}</version>
             <scope>provided</scope>
         </dependency>
+
+        <!-- Cache -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-jcache</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+
+
 
         <!--https://medium.com/criciumadev/its-time-migrating-to-java-11-5eb3868354f9-->
         <dependency>
@@ -239,12 +246,26 @@
             <version>${hamcrest.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>com.jayway.jsonpath</groupId>
+            <artifactId>json-path</artifactId>
+            <version>${json-path.version}</version>
+            <scope>test</scope>
+        </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-test</artifactId>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-test</artifactId>
+            <version>${spring.security.version}</version>
+            <scope>test</scope>
+        </dependency>
+
         <dependency>
             <groupId>org.assertj</groupId>
             <artifactId>assertj-core</artifactId>
