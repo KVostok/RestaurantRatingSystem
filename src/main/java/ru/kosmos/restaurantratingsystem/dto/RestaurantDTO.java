@@ -13,7 +13,7 @@ public class RestaurantDTO extends BaseDTO {
     private final Integer rating;
     private final boolean isVoted;
 
-    @ConstructorProperties({"id", "name", "menues", "rating"})
+    @ConstructorProperties({"id", "name", "menues", "rating", "isVoted"})
     public RestaurantDTO(Integer id, String name, Set<Menu> menues, Integer rating, boolean isVoted) {
         super(id);
         this.name = name;

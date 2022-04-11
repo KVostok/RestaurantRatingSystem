@@ -36,6 +36,18 @@ public class Restaurant extends AbstractNamedEntity {
     @OneToMany(mappedBy = "restaurant")
     private Set<Menu> menues;
 
+    public Restaurant() {
+    }
+
+    public Restaurant(Integer id, String name) {
+        super(id, name);
+    }
+
+    public Restaurant(Restaurant restaurant) {
+        super(restaurant.id(), restaurant.getName());
+        this.menues = restaurant.getMenues();
+    }
+
     public Set<Menu> getMenues() {
         return menues;
     }

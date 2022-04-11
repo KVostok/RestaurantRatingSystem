@@ -19,7 +19,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
-import static ru.kosmos.restaurantratingsystem.TestUtil.userHttpBasic;
 import static ru.kosmos.restaurantratingsystem.testdata.UsersTestData.*;
 import static ru.kosmos.restaurantratingsystem.util.exception.ErrorType.*;
 
@@ -129,7 +128,8 @@ class AdminRestControllerTest extends AbstractControllerTest {
     @Test
     void getUnAuth() throws Exception {
         perform(MockMvcRequestBuilders.get(REST_URL))
-                .andExpect(status().isUnauthorized());
+                .andExpect(status().isUnauthorized())
+                .andDo(print());
     }
 
     @Test
