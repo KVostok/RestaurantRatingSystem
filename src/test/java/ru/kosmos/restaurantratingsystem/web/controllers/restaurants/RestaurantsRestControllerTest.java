@@ -53,23 +53,6 @@ class RestaurantsRestControllerTest extends AbstractControllerTest {
     }
 
     @Test
-    void delete() throws Exception {
-        perform(MockMvcRequestBuilders.delete(REST_URL + REST_ID)
-                .with(userHttpBasic(admin)))
-                .andDo(print())
-                .andExpect(status().isNoContent());
-        assertThrows(NotFoundException.class, () -> service.get(REST_ID));
-    }
-
-    @Test
-    void deleteNotFound() throws Exception {
-        perform(MockMvcRequestBuilders.delete(REST_URL + NOT_FOUND)
-                .with(userHttpBasic(admin)))
-                .andDo(print())
-                .andExpect(status().isUnprocessableEntity());
-    }
-
-    @Test
     void getAccessDenied() throws Exception {
         perform(MockMvcRequestBuilders.get(REST_URL + REST_ID)
                 .with(userHttpBasic(user1)))
@@ -87,31 +70,20 @@ class RestaurantsRestControllerTest extends AbstractControllerTest {
     }
 
     @Test
-    void updateHtmlUnsafe() throws Exception {
-        Restaurant updated = new Restaurant(rest1);
-        updated.setName("<script>alert(123)</script>");
-        perform(MockMvcRequestBuilders.put(REST_URL + REST_ID)
-                .contentType(MediaType.APPLICATION_JSON)
-                .with(userHttpBasic(admin))
-                .content(JsonUtil.writeValue(updated)))
+    void delete() throws Exception {
+        perform(MockMvcRequestBuilders.delete(REST_URL + REST_ID)
+                .with(userHttpBasic(admin)))
                 .andDo(print())
-                .andExpect(status().isUnprocessableEntity())
-                .andExpect(errorType(VALIDATION_ERROR));
+                .andExpect(status().isNoContent());
+        assertThrows(NotFoundException.class, () -> service.get(REST_ID));
     }
 
     @Test
-    void createWithLocation() throws Exception {
-        Restaurant newRestaurant = RestaurantTestData.getNew();
-        ResultActions action = perform(MockMvcRequestBuilders.post(REST_URL)
-                .contentType(MediaType.APPLICATION_JSON)
-                .with(userHttpBasic(admin))
-                .content(JsonUtil.writeValue(newRestaurant)));
-
-        Restaurant created = MATCHER.readFromJson(action);
-        int newId = created.id();
-        newRestaurant.setId(newId);
-        MATCHER.assertMatch(created, newRestaurant);
-        MATCHER.assertMatch(service.get(newId), newRestaurant);
+    void deleteNotFound() throws Exception {
+        perform(MockMvcRequestBuilders.delete(REST_URL + NOT_FOUND)
+                .with(userHttpBasic(admin)))
+                .andDo(print())
+                .andExpect(status().isUnprocessableEntity());
     }
 
     @Test
@@ -127,12 +99,13 @@ class RestaurantsRestControllerTest extends AbstractControllerTest {
     }
 
     @Test
-    void createInvalid() throws Exception {
-        Restaurant invalid = new Restaurant(null, "");
-        perform(MockMvcRequestBuilders.post(REST_URL)
+    void updateHtmlUnsafe() throws Exception {
+        Restaurant updated = new Restaurant(rest1);
+        updated.setName("<script>alert(123)</script>");
+        perform(MockMvcRequestBuilders.put(REST_URL + REST_ID)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content(JsonUtil.writeValue(invalid))
-                .with(userHttpBasic(admin)))
+                .with(userHttpBasic(admin))
+                .content(JsonUtil.writeValue(updated)))
                 .andDo(print())
                 .andExpect(status().isUnprocessableEntity())
                 .andExpect(errorType(VALIDATION_ERROR));
@@ -163,6 +136,33 @@ class RestaurantsRestControllerTest extends AbstractControllerTest {
                 .andExpect(status().isConflict())
                 .andExpect(errorType(DATA_ERROR))
                 .andExpect(detailMessage("integrity constraint violation: unique constraint or index violation: RESTAURANTS_UNIQUE_NAME_IDX"));
+    }
+
+    @Test
+    void createWithLocation() throws Exception {
+        Restaurant newRestaurant = RestaurantTestData.getNew();
+        ResultActions action = perform(MockMvcRequestBuilders.post(REST_URL)
+                .contentType(MediaType.APPLICATION_JSON)
+                .with(userHttpBasic(admin))
+                .content(JsonUtil.writeValue(newRestaurant)));
+
+        Restaurant created = MATCHER.readFromJson(action);
+        int newId = created.id();
+        newRestaurant.setId(newId);
+        MATCHER.assertMatch(created, newRestaurant);
+        MATCHER.assertMatch(service.get(newId), newRestaurant);
+    }
+
+    @Test
+    void createInvalid() throws Exception {
+        Restaurant invalid = new Restaurant(null, "");
+        perform(MockMvcRequestBuilders.post(REST_URL)
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(JsonUtil.writeValue(invalid))
+                .with(userHttpBasic(admin)))
+                .andDo(print())
+                .andExpect(status().isUnprocessableEntity())
+                .andExpect(errorType(VALIDATION_ERROR));
     }
 
     @Test

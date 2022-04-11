@@ -15,6 +15,17 @@ public class Dish extends AbstractNamedEntity {
     @JsonBackReference
     private Set<Dishes> dishes;
 
+    public Dish() {
+    }
+
+    public Dish(Integer id, String name) {
+        super(id, name);
+    }
+
+    public Dish(Dish dish) {
+        super(dish.getId(), dish.getName());
+    }
+
     public Set<Dishes> getDishes() {
         return dishes;
     }
