@@ -21,7 +21,6 @@ public class MenuRestController extends AbstractMenuRestController {
 
     static final String REST_URL = "/rest/menues";
 
-    @Override
     @GetMapping("/{id}")
     public Menu getWithDishes(@PathVariable int id) {
         return super.getWithDishes(id);

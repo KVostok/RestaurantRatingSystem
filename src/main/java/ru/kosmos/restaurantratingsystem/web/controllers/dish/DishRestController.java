@@ -20,13 +20,11 @@ public class DishRestController extends AbstractDishRestController {
 
     static final String REST_URL = "/rest/dish";
 
-    @Override
     @GetMapping("/{id}")
     public Dish get(@PathVariable int id) {
         return super.get(id);
     }
 
-    @Override
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable int id) {
@@ -42,14 +40,12 @@ public class DishRestController extends AbstractDishRestController {
         return ResponseEntity.created(uriOfNewResource).body(created);
     }
 
-    @Override
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void update(@Validated(View.Web.class) @RequestBody Dish dish, @PathVariable int id) {
         super.update(dish, id);
     }
 
-    @Override
     @GetMapping
     public List<Dish> getAll() {
         return super.getAll();

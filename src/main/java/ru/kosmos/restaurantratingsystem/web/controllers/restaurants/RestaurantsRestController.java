@@ -20,14 +20,12 @@ public class RestaurantsRestController extends AbstractRestaurantRestController 
 
     static final String REST_URL = "/rest/restaurants";
 
-    @Override
     @GetMapping("/{id}")
     @Secured("ROLE_ADMIN")
     public Restaurant get(@PathVariable int id) {
         return super.get(id);
     }
 
-    @Override
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @Secured("ROLE_ADMIN")
@@ -45,7 +43,6 @@ public class RestaurantsRestController extends AbstractRestaurantRestController 
         return ResponseEntity.created(uriOfNewResource).body(created);
     }
 
-    @Override
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @Secured("ROLE_ADMIN")
@@ -53,7 +50,6 @@ public class RestaurantsRestController extends AbstractRestaurantRestController 
         super.update(restaurant, id);
     }
 
-    @Override
     @GetMapping
     @Secured({"ROLE_ADMIN", "ROLE_USER"})
     public List<RestaurantDTO> getAllWithMenu() {

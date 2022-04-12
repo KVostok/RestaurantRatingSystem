@@ -21,8 +21,9 @@ public class VoteRestController extends AbstractVoteRestController {
 
     static final String REST_URL = "/rest/votes";
 
-    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Votes> createWithLocation(@Validated(View.Web.class) @RequestParam int menuId) {
+    //https://stackoverflow.com/questions/28245362/swagger-415-unsupported-media-type-application-json-instead-of-text-plain-in-po
+    @PostMapping
+    public ResponseEntity<Votes> createWithLocation(@Validated(View.Web.class) @RequestParam Integer menuId) {
         Votes created = super.create(menuId);
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path(REST_URL + "/{id}")

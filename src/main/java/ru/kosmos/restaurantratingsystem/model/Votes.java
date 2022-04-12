@@ -1,6 +1,6 @@
 package ru.kosmos.restaurantratingsystem.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 
@@ -10,13 +10,13 @@ public class Votes extends AbstractBaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "MENU_ID", nullable = false)
-    @JsonBackReference
+    @JsonIgnore
     @OrderColumn
     private Menu menu;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID", nullable = false)
-    @JsonBackReference
+    @JsonIgnore
     @OrderColumn
     private Users user;
 
