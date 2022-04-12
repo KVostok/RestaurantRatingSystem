@@ -23,6 +23,10 @@ public class Role extends AbstractNamedEntity {
         super(id, name);
     }
 
+    public void setRoles(Set<Roles> roles) {
+        this.roles = roles;
+    }
+
     public Set<Roles> getRoles() {
         return roles;
     }

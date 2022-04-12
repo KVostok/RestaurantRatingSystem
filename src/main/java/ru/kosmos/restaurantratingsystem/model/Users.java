@@ -70,6 +70,10 @@ public class Users extends AbstractNamedEntity {
         this.roles = user.getRoles();
     }
 
+    public void setVotes(Set<Votes> votes) {
+        this.votes = votes;
+    }
+
     public Set<Votes> getVotes() {
         return votes;
     }

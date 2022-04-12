@@ -26,6 +26,10 @@ public class Dish extends AbstractNamedEntity {
         super(dish.getId(), dish.getName());
     }
 
+    public void setDishes(Set<Dishes> dishes) {
+        this.dishes = dishes;
+    }
+
     public Set<Dishes> getDishes() {
         return dishes;
     }

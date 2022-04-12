@@ -1,12 +1,15 @@
 package ru.kosmos.restaurantratingsystem.dto;
 
+import javax.validation.constraints.NotNull;
 import java.beans.ConstructorProperties;
 import java.util.List;
 import java.util.Objects;
 
 public class MenuDTO {
 
+    @NotNull
     private final Integer restaurantId;
+    @NotNull
     private final List<DishesDTO> dishes;
 
     @ConstructorProperties({"restaurantId", "dishes"})

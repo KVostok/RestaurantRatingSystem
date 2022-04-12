@@ -31,12 +31,34 @@ public class Dishes extends AbstractBaseEntity {
         this.price = price;
     }
 
+    public Dishes(Integer id, Integer price, Dish dish) {
+        super(id);
+        this.price = price;
+        this.dish = dish;
+    }
+
+    public Integer getPrice() {
+        return price;
+    }
+
+    public void setPrice(Integer price) {
+        this.price = price;
+    }
+
     public Menu getMenu() {
         return menu;
     }
 
     public void setMenu(Menu menu) {
         this.menu = menu;
+    }
+
+    public Dish getDish() {
+        return dish;
+    }
+
+    public void setDish(Dish dish) {
+        this.dish = dish;
     }
 
     @Override

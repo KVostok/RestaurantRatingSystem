@@ -20,6 +20,10 @@ public class Votes extends AbstractBaseEntity {
     @OrderColumn
     private Users user;
 
+    public void setUser(Users user) {
+        this.user = user;
+    }
+
     public Menu getMenu() {
         return menu;
     }

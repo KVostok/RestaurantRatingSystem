@@ -36,6 +36,12 @@ public class Menu extends AbstractBaseEntity {
         this.date = date;
     }
 
+    public Menu(Integer id, @NotNull LocalDate date, Set<Dishes> dishes) {
+        super(id);
+        this.date = date;
+        this.dishes = dishes;
+    }
+
     public Menu(@NotNull Restaurant restaurant, @NotNull Set<Dishes> dishes) {
         this.restaurant = restaurant;
         //https://javascopes.com/jpa-hibernate-synchronize-bidirectional-entity-associations-2ccfb961/
@@ -49,8 +55,32 @@ public class Menu extends AbstractBaseEntity {
         this.date = date;
     }
 
+    public LocalDate getDate() {
+        return date;
+    }
+
     public Set<Votes> getVotes() {
         return votes;
+    }
+
+    public void setVotes(Set<Votes> votes) {
+        this.votes = votes;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public Set<Dishes> getDishes() {
+        return dishes;
+    }
+
+    public void setDishes(Set<Dishes> dishes) {
+        this.dishes = dishes;
     }
 
     @Override

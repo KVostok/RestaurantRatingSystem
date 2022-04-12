@@ -34,6 +34,10 @@ public class RestaurantDTO extends BaseDTO {
         return isVoted;
     }
 
+    public Set<Menu> getMenues() {
+        return menues;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
