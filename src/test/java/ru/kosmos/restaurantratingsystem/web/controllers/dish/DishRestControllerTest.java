@@ -9,7 +9,6 @@ import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 import ru.kosmos.restaurantratingsystem.model.Dish;
 import ru.kosmos.restaurantratingsystem.service.DishService;
-import ru.kosmos.restaurantratingsystem.testdata.DishTestData;
 import ru.kosmos.restaurantratingsystem.util.exception.NotFoundException;
 import ru.kosmos.restaurantratingsystem.web.AbstractControllerTest;
 import ru.kosmos.restaurantratingsystem.web.json.JsonUtil;
@@ -84,7 +83,7 @@ class DishRestControllerTest extends AbstractControllerTest {
 
     @Test
     void update() throws Exception {
-        Dish updated = DishTestData.getUpdated();
+        Dish updated = getUpdatedDish();
         perform(MockMvcRequestBuilders.put(REST_URL + DISH_ID)
                 .contentType(MediaType.APPLICATION_JSON)
                 .with(userHttpBasic(admin))
@@ -136,7 +135,7 @@ class DishRestControllerTest extends AbstractControllerTest {
 
     @Test
     void createWithLocation() throws Exception {
-        Dish newDish = DishTestData.getNew();
+        Dish newDish = getNewDish();
         ResultActions action = perform(MockMvcRequestBuilders.post(REST_URL)
                 .contentType(MediaType.APPLICATION_JSON)
                 .with(userHttpBasic(admin))

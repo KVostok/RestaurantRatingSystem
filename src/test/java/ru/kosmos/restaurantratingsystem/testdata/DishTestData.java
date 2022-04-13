@@ -24,11 +24,11 @@ public class DishTestData {
 
     public static final List<Dish> dishes = List.of(dish1, dish2, dish3, dish4, dish5, dish6, dish7, dish8);
 
-    public static Dish getNew() {
+    public static Dish getNewDish() {
         return new Dish(null, "Пельмени");
     }
 
-    public static Dish getUpdated() {
+    public static Dish getUpdatedDish() {
         return new Dish(DISH_ID, "Борщ");
     }
 

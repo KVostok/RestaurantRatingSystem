@@ -61,7 +61,7 @@ class AdminRestControllerTest extends AbstractControllerTest {
     @Test
     void createWithLocation() throws Exception {
         userService.switchOfModificationRestriction();
-        Users newUser = getNew();
+        Users newUser = getNewUser();
         ResultActions action = perform(MockMvcRequestBuilders.post(REST_URL)
                 .contentType(MediaType.APPLICATION_JSON)
                 .with(userHttpBasic(admin))
@@ -104,7 +104,7 @@ class AdminRestControllerTest extends AbstractControllerTest {
     @Test
     void update() throws Exception {
         userService.switchOfModificationRestriction();
-        Users updated = getUpdated();
+        Users updated = getUpdatedUser();
         updated.setId(null);
         perform(MockMvcRequestBuilders.put(REST_URL + USER_ID)
                 .contentType(MediaType.APPLICATION_JSON)
@@ -112,7 +112,7 @@ class AdminRestControllerTest extends AbstractControllerTest {
                 .content(jsonWithPassword(updated, updated.getPassword())))
                 .andExpect(status().isNoContent());
         userService.switchOnModificationRestriction();
-        MATCHER.assertMatch(userService.getByIdWithRoles(USER_ID), getUpdated());
+        MATCHER.assertMatch(userService.getByIdWithRoles(USER_ID), getUpdatedUser());
     }
 
     @Test

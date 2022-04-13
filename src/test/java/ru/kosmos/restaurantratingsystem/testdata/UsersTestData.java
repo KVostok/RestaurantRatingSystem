@@ -56,13 +56,13 @@ public class UsersTestData {
         admin.setRoles(Set.of(adminRoles1, adminRoles2));
     }
 
-    public static Users getNew() {
+    public static Users getNewUser() {
         Users user = new Users(null, "New", "new@gmail.com", "newPass", false, new Date());
         user.setRoles(Set.of(new Roles(null, user, userRole)));
         return user;
     }
 
-    public static Users getUpdated() {
+    public static Users getUpdatedUser() {
         Users user = new Users(USER_ID, "UpdatedName", "user@yandex.ru", "newPass", false, new Date());
         user.setRoles(Set.of(userRoles));
         return user;

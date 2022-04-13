@@ -15,11 +15,11 @@ public class RestaurantTestData {
 
     public static final Restaurant rest1 = new Restaurant(REST_ID, "Радуга");
 
-    public static Restaurant getNew() {
+    public static Restaurant getNewRestaurant() {
         return new Restaurant(null, "NewRestaurant");
     }
 
-    public static Restaurant getUpdated() {
+    public static Restaurant getUpdatedRestaurant() {
         return new Restaurant(REST_ID, "UpdatedName");
     }
 
