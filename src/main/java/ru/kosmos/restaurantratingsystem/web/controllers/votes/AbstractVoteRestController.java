@@ -7,6 +7,8 @@ import ru.kosmos.restaurantratingsystem.model.Votes;
 import ru.kosmos.restaurantratingsystem.service.VoteService;
 import ru.kosmos.restaurantratingsystem.web.SecurityUtil;
 
+import java.time.LocalTime;
+
 public abstract class AbstractVoteRestController {
 
     private final Logger log = LoggerFactory.getLogger(getClass());
@@ -14,10 +16,10 @@ public abstract class AbstractVoteRestController {
     @Autowired
     private VoteService voteService;
 
-    public Votes create(int menuId) {
+    public Votes create(int menuId, LocalTime current, LocalTime constraint) {
         int userId = SecurityUtil.authUserId();
         log.info("create vote of user with id {} for menu with id {}", userId, menuId);
-        return voteService.create(userId, menuId);
+        return voteService.create(userId, menuId, current, constraint);
     }
 
 }

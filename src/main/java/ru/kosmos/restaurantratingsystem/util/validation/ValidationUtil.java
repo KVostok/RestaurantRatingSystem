@@ -15,7 +15,7 @@ import java.util.Set;
 
 public class ValidationUtil {
 
-    public static final LocalTime TIME_CONSTRAINT = LocalTime.of(11, 0, 0);
+    public static LocalTime TIME_CONSTRAINT = LocalTime.of(11, 0, 0);
 
     private static final Validator validator;
 

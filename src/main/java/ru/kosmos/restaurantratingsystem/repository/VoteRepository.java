@@ -14,6 +14,10 @@ public class VoteRepository {
         this.repository = repository;
     }
 
+    public Votes getByIdWithMenuWithUser(int id) {
+        return repository.getByIdWithMenuWithUser(id).orElse(null);
+    }
+
     public Votes save(Votes votes) {
         return repository.save(votes);
     }

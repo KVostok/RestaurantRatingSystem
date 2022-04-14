@@ -13,6 +13,9 @@ import ru.kosmos.restaurantratingsystem.View;
 import ru.kosmos.restaurantratingsystem.model.Votes;
 
 import java.net.URI;
+import java.time.LocalTime;
+
+import static ru.kosmos.restaurantratingsystem.util.validation.ValidationUtil.TIME_CONSTRAINT;
 
 @RestController
 @RequestMapping(value = VoteRestController.REST_URL, produces = MediaType.APPLICATION_JSON_VALUE)
@@ -24,7 +27,7 @@ public class VoteRestController extends AbstractVoteRestController {
     //https://stackoverflow.com/questions/28245362/swagger-415-unsupported-media-type-application-json-instead-of-text-plain-in-po
     @PostMapping
     public ResponseEntity<Votes> createWithLocation(@Validated(View.Web.class) @RequestParam Integer menuId) {
-        Votes created = super.create(menuId);
+        Votes created = super.create(menuId, LocalTime.now(), TIME_CONSTRAINT);
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path(REST_URL + "/{id}")
                 .buildAndExpand(created.getId()).toUri();

@@ -1,6 +1,6 @@
 package ru.kosmos.restaurantratingsystem.model;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -12,7 +12,7 @@ import java.util.Set;
 public class Dish extends AbstractNamedEntity {
 
     @OneToMany(mappedBy = "dish")
-    @JsonBackReference
+    @JsonIgnore
     private Set<Dishes> dishes;
 
     public Dish() {
@@ -24,6 +24,7 @@ public class Dish extends AbstractNamedEntity {
 
     public Dish(Dish dish) {
         super(dish.getId(), dish.getName());
+        this.dishes = dish.getDishes();
     }
 
     public void setDishes(Set<Dishes> dishes) {

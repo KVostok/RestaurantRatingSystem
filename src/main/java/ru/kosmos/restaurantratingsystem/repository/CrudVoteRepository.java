@@ -15,4 +15,6 @@ public interface CrudVoteRepository extends JpaRepository<Votes, Integer> {
     @Query("select v from Votes v join v.menu m where v.user.id=:user_id and m.date=:today")
     Optional<Votes> getWithMenuForUserOnToday(@Param("user_id") int userId, @Param("today") LocalDate today);
 
+    @Query("select v from Votes v join fetch v.user join fetch v.menu where v.id=:vote_id")
+    Optional<Votes> getByIdWithMenuWithUser(@Param("vote_id") int voteId);
 }

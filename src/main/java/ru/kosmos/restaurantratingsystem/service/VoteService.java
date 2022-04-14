@@ -4,11 +4,12 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.kosmos.restaurantratingsystem.model.Votes;
 import ru.kosmos.restaurantratingsystem.repository.VoteRepository;
+import ru.kosmos.restaurantratingsystem.util.DateTimeUtil;
 import ru.kosmos.restaurantratingsystem.util.exception.VoteCantBeChangedException;
 
 import java.time.LocalTime;
 
-import static ru.kosmos.restaurantratingsystem.util.validation.ValidationUtil.TIME_CONSTRAINT;
+import static ru.kosmos.restaurantratingsystem.util.validation.ValidationUtil.checkNotFoundWithId;
 
 @Service
 public class VoteService {
@@ -24,16 +25,19 @@ public class VoteService {
     }
 
     @Transactional
-    public Votes create(int userId, int menuId) {
+    public Votes create(int userId, int menuId, LocalTime current, LocalTime constraint) {
         Votes votes = voteRepository.getForUser(userId);
 
         if (votes == null)
             return voteRepository.save(new Votes(menuService.get(menuId), userService.get(userId)));
-        if (!LocalTime.now().isBefore(TIME_CONSTRAINT))
-            throw new VoteCantBeChangedException("Vote can't be changed after 11-00");
+        if (!current.isBefore(constraint))
+            throw new VoteCantBeChangedException("Vote can't be changed after " + DateTimeUtil.toString(constraint));
 
         votes.setMenu(menuService.get(menuId));
         return voteRepository.save(votes);
     }
 
+    public Votes getByIdWithMenuWithUser(int id) {
+        return checkNotFoundWithId(voteRepository.getByIdWithMenuWithUser(id), id);
+    }
 }
