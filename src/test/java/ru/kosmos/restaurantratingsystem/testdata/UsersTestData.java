@@ -9,11 +9,19 @@ import ru.kosmos.restaurantratingsystem.web.json.JsonUtil;
 import java.util.Date;
 import java.util.Set;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static ru.kosmos.restaurantratingsystem.model.AbstractBaseEntity.START_SEQ;
 
 public class UsersTestData {
 
     public static final MatcherFactory.Matcher<Users> MATCHER = MatcherFactory.usingIgnoringFieldsComparator(Users.class, "registered", "password", "votes", "roles");
+    public static MatcherFactory.Matcher<Users> WITH_ROLES_MATCHER =
+            MatcherFactory.usingAssertions(Users.class,
+                    (a, e) -> assertThat(a).usingRecursiveComparison()
+                            .ignoringFields("registered", "password", "votes", "roles.user", "roles.role.roles").isEqualTo(e),
+                    (a, e) -> {
+                        throw new UnsupportedOperationException();
+                    });
 
     public static final int USER_ID = START_SEQ + 1;
     public static final int ADMIN_ID = START_SEQ;

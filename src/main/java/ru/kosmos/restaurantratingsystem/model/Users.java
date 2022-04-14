@@ -61,6 +61,15 @@ public class Users extends AbstractNamedEntity {
         this.registered = registered;
     }
 
+    public Users(Integer id, String name, String email, String password, boolean enabled, Date registered, Set<Roles> roles) {
+        super(id, name);
+        this.email = email;
+        this.password = password;
+        this.enabled = enabled;
+        this.registered = registered;
+        this.roles = roles;
+    }
+
     public Users(Users user) {
         super(user.id(), user.getName());
         this.email = user.getEmail();
@@ -68,6 +77,7 @@ public class Users extends AbstractNamedEntity {
         this.enabled = user.isEnabled();
         this.registered = user.getRegistered();
         this.roles = user.getRoles();
+        this.votes = user.getVotes();
     }
 
     public void setVotes(Set<Votes> votes) {
