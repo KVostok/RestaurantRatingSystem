@@ -60,8 +60,8 @@ public class Restaurant extends AbstractNamedEntity {
     public String toString() {
         return "\nRestaurant{" +
                 "id rest=" + id +
-                ", name='" + name +
-                ",\n menues=" + menues +
+                ", name='" + name + "'" +
+                ",\n menues=" + (menues == null ? "null" : menues) +
                 "}\n";
     }
 

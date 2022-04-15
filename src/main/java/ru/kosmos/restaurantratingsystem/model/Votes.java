@@ -44,12 +44,18 @@ public class Votes extends AbstractBaseEntity {
         this.user = user;
     }
 
+    public Votes(Integer id, Menu menu, Users user) {
+        super(id);
+        this.menu = menu;
+        this.user = user;
+    }
+
     @Override
     public String toString() {
-        return "Votes{" +
+        return "\nVotes{" +
                 "id=" + id +
-                ", userId=" + user.getId() +
-                ", menuId=" + menu.getId() +
+                ", userId=" + (user == null ? "null" : user.getId()) +
+                ", menuId=" + (user == null ? "null" : menu.getId()) +
                 '}';
     }
 

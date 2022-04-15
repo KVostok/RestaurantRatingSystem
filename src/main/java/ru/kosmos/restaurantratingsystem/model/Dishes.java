@@ -65,7 +65,7 @@ public class Dishes extends AbstractBaseEntity {
     public String toString() {
         return "\nDishes{" +
                 "price=" + price +
-                ", dish=" + dish +
+                ", dish=" + (dish == null ? "null" : dish) +
                 ", id dishes=" + id +
                 '}';
     }
