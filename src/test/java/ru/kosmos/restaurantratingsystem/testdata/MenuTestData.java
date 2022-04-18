@@ -17,6 +17,7 @@ import static ru.kosmos.restaurantratingsystem.testdata.UsersTestData.*;
 public class MenuTestData {
 
     public static final MatcherFactory.Matcher<Menu> MATCHER = MatcherFactory.usingIgnoringFieldsComparator(Menu.class, "restaurant", "votes");
+    public static final MatcherFactory.Matcher<Menu> MATCHER_EASY = MatcherFactory.usingIgnoringFieldsComparator(Menu.class, "restaurant", "votes", "dishes");
     public static MatcherFactory.Matcher<Menu> WITH_DISHES_MATCHER =
             MatcherFactory.usingAssertions(Menu.class,
                     (a, e) -> assertThat(a).usingRecursiveComparison()

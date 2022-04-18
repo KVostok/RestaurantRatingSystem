@@ -2,6 +2,20 @@ package ru.kosmos.restaurantratingsystem.service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
+import ru.kosmos.restaurantratingsystem.dto.DishesDTO;
+import ru.kosmos.restaurantratingsystem.dto.MenuDTO;
+import ru.kosmos.restaurantratingsystem.model.Menu;
+import ru.kosmos.restaurantratingsystem.testdata.MenuTestData;
+import ru.kosmos.restaurantratingsystem.util.MenuUtil;
+import ru.kosmos.restaurantratingsystem.util.exception.NotFoundException;
+
+import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static ru.kosmos.restaurantratingsystem.testdata.MenuTestData.*;
+import static ru.kosmos.restaurantratingsystem.testdata.RestaurantTestData.REST_ID;
+import static ru.kosmos.restaurantratingsystem.testdata.UsersTestData.NOT_FOUND;
 
 class MenuServiceTest extends AbstractServiceTest {
 
@@ -9,14 +23,44 @@ class MenuServiceTest extends AbstractServiceTest {
     protected MenuService service;
 
     @Test
-    void getWithDishes() {
+    void get() {
+        Menu menu = service.get(MENU_ID);
+        menu.setDishes(null);
+        menu.setVotes(null);
+        MATCHER_EASY.assertMatch(menu, MenuTestData.menu);
     }
 
     @Test
-    void get() {
+    void getNotFound() {
+        assertThrows(NotFoundException.class, () -> service.get(NOT_FOUND));
+    }
+
+    @Test
+    void getWithDishes() {
+        Menu menu = service.getWithDishes(MENU_ID);
+        WITH_DISHES_MATCHER.assertMatch(menu, MenuTestData.menu);
+    }
+
+    @Test
+    void getWithDishesNotFound() {
+        assertThrows(NotFoundException.class, () -> service.get(NOT_FOUND));
     }
 
     @Test
     void create() {
+        MenuDTO newDto = new MenuDTO(REST_ID + 5, List.of(new DishesDTO(10000, 10),
+                new DishesDTO(10001, 20)));
+        Menu newMenu = MenuUtil.asEntity(newDto);
+        Menu created = service.create(newMenu);
+        WITH_DISHES_MATCHER.assertMatch(created, newMenu);
     }
+
+    @Test
+    void createDuplicate() {
+        MenuDTO newDto = new MenuDTO(REST_ID, List.of(new DishesDTO(10000, 10),
+                new DishesDTO(10001, 20)));
+        Menu newMenu = MenuUtil.asEntity(newDto);
+        assertThrows(DataAccessException.class, () -> service.create(newMenu));
+    }
+
 }

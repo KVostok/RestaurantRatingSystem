@@ -1,6 +1,8 @@
 package ru.kosmos.restaurantratingsystem.web.json;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import ru.kosmos.restaurantratingsystem.TimingExtension;
 import ru.kosmos.restaurantratingsystem.model.Menu;
 import ru.kosmos.restaurantratingsystem.model.Users;
 
@@ -14,6 +16,7 @@ import static ru.kosmos.restaurantratingsystem.testdata.MenuTestData.*;
 import static ru.kosmos.restaurantratingsystem.testdata.UsersTestData.jsonWithPassword;
 import static ru.kosmos.restaurantratingsystem.testdata.UsersTestData.user1;
 
+@ExtendWith(TimingExtension.class)
 class JsonUtilTest {
 
     @Test

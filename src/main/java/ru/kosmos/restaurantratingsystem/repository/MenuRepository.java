@@ -21,7 +21,7 @@ public class MenuRepository {
     }
 
     public Menu get(int id) {
-        return repository.getById(id);
+        return repository.findById(id).orElse(null);
     }
 
 }
