@@ -5,9 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.ResultActions;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import ru.kosmos.restaurantratingsystem.MatcherFactory;
 import ru.kosmos.restaurantratingsystem.model.Votes;
 import ru.kosmos.restaurantratingsystem.service.VoteService;
+import ru.kosmos.restaurantratingsystem.testdata.VotesTestData;
 import ru.kosmos.restaurantratingsystem.util.validation.ValidationUtil;
 import ru.kosmos.restaurantratingsystem.web.AbstractControllerTest;
 
@@ -22,7 +22,6 @@ import static ru.kosmos.restaurantratingsystem.util.exception.ErrorType.APP_ERRO
 
 class VoteRestControllerTest extends AbstractControllerTest {
 
-    public static final MatcherFactory.Matcher<Votes> MATCHER = MatcherFactory.usingEqualsComparator(Votes.class);
     private static final String REST_URL = VoteRestController.REST_URL + '/';
 
     @Autowired
@@ -46,9 +45,9 @@ class VoteRestControllerTest extends AbstractControllerTest {
                 .andExpect(status().isCreated())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
 
-        newVote.setId(MATCHER.readFromJson(action).id());
+        newVote.setId(VotesTestData.MATCHER.readFromJson(action).id());
         Votes created = service.getByIdWithMenuWithUser(newVote.id());
-        MATCHER.assertMatch(created, newVote);
+        VotesTestData.MATCHER.assertMatch(created, newVote);
         ValidationUtil.TIME_CONSTRAINT = LocalTime.of(11, 0, 0);
     }
 
@@ -63,9 +62,9 @@ class VoteRestControllerTest extends AbstractControllerTest {
                 .andExpect(status().isCreated())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON));
 
-        newVote.setId(MATCHER.readFromJson(action).id());
+        newVote.setId(VotesTestData.MATCHER.readFromJson(action).id());
         Votes created = service.getByIdWithMenuWithUser(newVote.id());
-        MATCHER.assertMatch(created, newVote);
+        VotesTestData.MATCHER.assertMatch(created, newVote);
         ValidationUtil.TIME_CONSTRAINT = LocalTime.of(11, 0, 0);
     }
 
