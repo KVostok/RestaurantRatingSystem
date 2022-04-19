@@ -25,8 +25,12 @@ Voting system for deciding where to have lunch.
 Each restaurant provides new menu each day.
 
 ---
-### _Steps to run app_
+### _Steps to launch app_
+Build:<br>
+_mvn -B -DskipTests=true clean package_<br>
+
 Using by Docker:<br>
+(By default dockerfile uses image from docker hub. To custom from local image uncomment first 8 lines in dockerfile and comment 13th line.)
 * _docker build . -t restvoting_<br>
 * _docker run -p 8080:8080 -t restvoting_<br>
 * _Open in browser: <a href="http://localhost:8080">localhost:8080</a>_</br>
