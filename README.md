@@ -4,10 +4,15 @@
 
 ---
 ### _A voting system REST API using Hibernate/Spring/SpringMVC_
-<a href="https://restvoting-kvostok.koyeb.app">_Demo_</a> on <a href="https://www.koyeb.com/">_Koyeb.com_</a>
-_(Koyeb - The fastest way to deploy applications globally)_</br>
-(Authorize with: _user1@yandex.ru / password_ for user role or _admin@gmail.com / admin_ for admin role)</br>
-* <a href="https://restvoting-kvostok.koyeb.app/swagger-ui.html">_REST Api Documentation_</a></br>
+[_Demo_](https://restvoting-kvostok.koyeb.app) on [_Koyeb.com_](https://www.koyeb.com/)
+_(Koyeb - The fastest way to deploy applications globally)_<br>
+* [_REST Api Documentation_](https://restvoting-kvostok.koyeb.app/swagger-ui.html)<br>
+
+Credentials:
+|Username|Password|
+|---|---|
+| `user1@yandex.ru` | `password` |
+| `admin@gmail.com` | `admin` |
 
 ---
 ### _Terms of reference_
@@ -27,18 +32,18 @@ Each restaurant provides new menu each day.
 ---
 ### _Steps to launch app_
 Build:<br>
-_mvn -B -DskipTests=true clean package_<br>
+`mvn -B -DskipTests=true clean package`<br>
 
 Using by Docker:<br>
 (By default dockerfile uses image from docker hub. To custom from local image uncomment first 8 lines in dockerfile and comment 13th line.)
-* _docker build . -t restvoting_<br>
-* _docker run -p 8080:8080 -t restvoting_<br>
-* _Open in browser: <a href="http://localhost:8080">localhost:8080</a>_</br>
+* `docker build . -t restvoting`<br>
+* `docker run -p 8080:8080 -t restvoting`<br>
+* _Open in browser: [localhost:8080](http://localhost:8080)_<br>
 
 ---
-### _REST Api Documentation:_</br>
-<a href="http://localhost:8080/v2/api-docs">_Api docs_</a></br>
-<a href="http://localhost:8080/swagger-ui.html">_Swagger-ui_</a></br>
+### _REST Api Documentation:_<br>
+[_Api docs_](http://localhost:8080/v2/api-docs)<br>
+[_Swagger-ui_](http://localhost:8080/swagger-ui.html)<br>
 
 ---
-<a href="https://kvostok.github.io/my-pet-projects/">Список моих пет-проектов на Github page</a>
+[Список моих пет-проектов на Github page](https://kvostok.github.io/my-pet-projects/)
