@@ -40,7 +40,7 @@ class VoteServiceTest extends AbstractServiceTest {
     }
 
     @Test
-    void ChangeVoteBeforeConstraint() {
+    void changeVoteBeforeConstraint() {
         Votes created = service.create(USER_ID, MENU_ID + 1, LocalTime.now(), LocalTime.now().plusMinutes(5));
         int newId = created.id();
         Votes newVote = new Votes(menu1, user1);
@@ -50,7 +50,7 @@ class VoteServiceTest extends AbstractServiceTest {
     }
 
     @Test
-    void ChangeVoteAfterConstraint() {
+    void changeVoteAfterConstraint() {
         assertThrows(VoteCantBeChangedException.class,
                 () -> service.create(USER_ID, MENU_ID + 1, LocalTime.now(), LocalTime.now().minusMinutes(5)));
     }

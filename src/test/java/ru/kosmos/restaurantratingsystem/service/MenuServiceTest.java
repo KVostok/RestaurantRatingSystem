@@ -24,10 +24,10 @@ class MenuServiceTest extends AbstractServiceTest {
 
     @Test
     void get() {
-        Menu menu = service.get(MENU_ID);
-        menu.setDishes(null);
-        menu.setVotes(null);
-        MATCHER_EASY.assertMatch(menu, MenuTestData.menu);
+        Menu actualMenu = service.get(MENU_ID);
+        actualMenu.setDishes(null);
+        actualMenu.setVotes(null);
+        MATCHER_EASY.assertMatch(actualMenu, menu);
     }
 
     @Test
@@ -37,8 +37,7 @@ class MenuServiceTest extends AbstractServiceTest {
 
     @Test
     void getWithDishes() {
-        Menu menu = service.getWithDishes(MENU_ID);
-        WITH_DISHES_MATCHER.assertMatch(menu, MenuTestData.menu);
+        WITH_DISHES_MATCHER.assertMatch(service.getWithDishes(MENU_ID), MenuTestData.menu);
     }
 
     @Test

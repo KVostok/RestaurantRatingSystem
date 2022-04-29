@@ -73,8 +73,7 @@ class UserServiceTest extends AbstractServiceTest {
 
     @Test
     void getByIdWithRoles() {
-        Users admin = service.getByIdWithRoles(ADMIN_ID);
-        WITH_ROLES_MATCHER.assertMatch(admin, UsersTestData.admin);
+        WITH_ROLES_MATCHER.assertMatch(service.getByIdWithRoles(ADMIN_ID), admin);
     }
 
     @Test
