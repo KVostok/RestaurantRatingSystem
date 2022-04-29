@@ -4,12 +4,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import ru.kosmos.restaurantratingsystem.View;
 import ru.kosmos.restaurantratingsystem.model.Users;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
@@ -31,7 +30,7 @@ public class AdminRestController extends AbstractUserController {
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Users> createWithLocation(@Validated(View.Web.class) @RequestBody Users users) {
+    public ResponseEntity<Users> createWithLocation(@Valid @RequestBody Users users) {
         Users created = super.create(users);
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path(REST_URL + "/{id}")
@@ -47,7 +46,7 @@ public class AdminRestController extends AbstractUserController {
 
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@Validated(View.Web.class) @RequestBody Users users, @PathVariable int id) {
+    public void update(@Valid @RequestBody Users users, @PathVariable int id) {
         super.update(users, id);
     }
 

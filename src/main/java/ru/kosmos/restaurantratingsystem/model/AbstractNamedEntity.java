@@ -1,6 +1,5 @@
 package ru.kosmos.restaurantratingsystem.model;
 
-import ru.kosmos.restaurantratingsystem.View;
 import ru.kosmos.restaurantratingsystem.util.validation.NoHtml;
 
 import javax.persistence.Column;
@@ -14,7 +13,7 @@ public abstract class AbstractNamedEntity extends AbstractBaseEntity {
     @NotBlank
     @Size(min = 2, max = 100)
     @Column(name = "name", nullable = false)
-    @NoHtml(groups = {View.Web.class})
+    @NoHtml
     protected String name;
 
     protected AbstractNamedEntity() {

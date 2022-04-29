@@ -2,7 +2,6 @@ package ru.kosmos.restaurantratingsystem.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import ru.kosmos.restaurantratingsystem.View;
 import ru.kosmos.restaurantratingsystem.util.validation.NoHtml;
 
 import javax.persistence.*;
@@ -21,7 +20,7 @@ public class Users extends AbstractNamedEntity {
     @Email
     @NotBlank
     @Size(max = 100)
-    @NoHtml(groups = {View.Web.class})  // https://stackoverflow.com/questions/17480809
+    @NoHtml  // https://stackoverflow.com/questions/17480809
     private String email;
 
     @Column(name = "password", nullable = false)

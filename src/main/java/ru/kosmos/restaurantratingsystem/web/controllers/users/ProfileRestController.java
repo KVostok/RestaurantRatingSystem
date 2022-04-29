@@ -3,11 +3,11 @@ package ru.kosmos.restaurantratingsystem.web.controllers.users;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import ru.kosmos.restaurantratingsystem.View;
 import ru.kosmos.restaurantratingsystem.dto.UsersDTO;
 import ru.kosmos.restaurantratingsystem.model.Users;
+
+import javax.validation.Valid;
 
 import static ru.kosmos.restaurantratingsystem.web.SecurityUtil.authUserId;
 
@@ -31,7 +31,7 @@ public class ProfileRestController extends AbstractUserController {
 
     @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@Validated(View.Web.class) @RequestBody UsersDTO usersDto) {
+    public void update(@Valid @RequestBody UsersDTO usersDto) {
         super.update(usersDto, authUserId());
     }
 

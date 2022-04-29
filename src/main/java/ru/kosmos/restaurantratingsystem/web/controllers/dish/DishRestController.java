@@ -4,12 +4,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import ru.kosmos.restaurantratingsystem.View;
 import ru.kosmos.restaurantratingsystem.model.Dish;
 
+import javax.validation.Valid;
 import java.net.URI;
 import java.util.List;
 
@@ -32,7 +31,7 @@ public class DishRestController extends AbstractDishRestController {
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Dish> createWithLocation(@Validated(View.Web.class) @RequestBody Dish dish) {
+    public ResponseEntity<Dish> createWithLocation(@Valid @RequestBody Dish dish) {
         Dish created = super.create(dish);
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path(REST_URL + "/{id}")
@@ -42,7 +41,7 @@ public class DishRestController extends AbstractDishRestController {
 
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void update(@Validated(View.Web.class) @RequestBody Dish dish, @PathVariable int id) {
+    public void update(@Valid @RequestBody Dish dish, @PathVariable int id) {
         super.update(dish, id);
     }
 

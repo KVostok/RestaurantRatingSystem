@@ -3,13 +3,12 @@ package ru.kosmos.restaurantratingsystem.web.controllers.menues;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.annotation.Secured;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import ru.kosmos.restaurantratingsystem.View;
 import ru.kosmos.restaurantratingsystem.dto.MenuDTO;
 import ru.kosmos.restaurantratingsystem.model.Menu;
 
+import javax.validation.Valid;
 import java.net.URI;
 
 import static ru.kosmos.restaurantratingsystem.util.MenuUtil.asEntity;
@@ -27,7 +26,7 @@ public class MenuRestController extends AbstractMenuRestController {
     }
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Menu> createWithLocation(@Validated(View.Web.class) @RequestBody MenuDTO menuDto) {
+    public ResponseEntity<Menu> createWithLocation(@Valid @RequestBody MenuDTO menuDto) {
         Menu created = super.create(asEntity(menuDto));
         URI uriOfNewResource = ServletUriComponentsBuilder.fromCurrentContextPath()
                 .path(REST_URL + "/{id}")
